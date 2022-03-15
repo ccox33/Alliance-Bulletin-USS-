@@ -1,0 +1,79 @@
+.header {
+	margin: 0;
+  	padding: 0;
+  	background-color: #F1F1F1;
+  	border-style: solid;
+  	border-width: 0px 0px 1px 0px;
+}
+
+ul.header {
+	position: sticky;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+ 	width: 100%;
+	}
+
+#logoLink {
+	display: block;
+  	padding: 0;
+  	text-decoration: none;
+	float:left;
+	}
+
+#about a {
+	display: block;
+  	background-color: #0076BC;
+  	color: white;
+	text-align: center;
+  	padding: 8px 16px;
+	margin-top: 20px;
+	margin-right: 20px;
+  	text-decoration: none;
+	float:right
+}
+
+#about a:hover {
+background-color: #1961a9;
+  color: white;
+}
+
+.actions {
+	margin: 50px;
+}
+
+table {
+	border-spacing: 0;
+	width: 100%;
+	border: 1px solid #ddd;
+	}
+
+th {
+	cursor: pointer;
+	}	
+
+th, td {
+	text-align: left;
+	padding: 16px;
+	}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2
+	}
+
+
+
+#createForm {
+	border-style: inset;
+	border-width: 2px;
+	border-radius: 5px;
+	padding: 25px 25px 25px 25px;
+	margin-left: 40px;
+	}
+
+.button {
+
+}

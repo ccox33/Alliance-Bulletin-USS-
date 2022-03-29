@@ -3,12 +3,14 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    Hello! I am an angular application. 
+    <app-header></app-header>
+    <app-create-bulletin></app-create-bulletin>
+    <app-login></app-login>
     <router-outlet></router-outlet>
+    <app-footer></app-footer>
   `,
   styles: []
 })
 export class AppComponent {
   title = 'alliance-bulletin';
 }
-

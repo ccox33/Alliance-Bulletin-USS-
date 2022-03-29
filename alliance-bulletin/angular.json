@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-angular-site": {
+    "alliance-bulletin": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -43,7 +43,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/my-angular-site",
+            "outputPath": "dist/alliance-bulletin",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -53,8 +53,8 @@
               "src/assets"
             ],
             "styles": [
-              "C:/Users/carle/my-angular-site/node_modules/bootstrap/dist/css/bootstrap.css",
-              "C:/Users/carle/my-angular-site/node_modules/bulma/css/bulma.css",
+              "C:/Users/carle/alliance-bulletin/node_modules/bootstrap/dist/css/bootstrap.css",
+              "C:/Users/carle/alliance-bulletin/node_modules/bulma/css/bulma.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -96,10 +96,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "my-angular-site:build:production"
+              "browserTarget": "alliance-bulletin:build:production"
             },
             "development": {
-              "browserTarget": "my-angular-site:build:development"
+              "browserTarget": "alliance-bulletin:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -107,11 +107,11 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "my-angular-site:build"
+            "browserTarget": "alliance-bulletin:build"
           }
         }
       }
     }
   },
-  "defaultProject": "my-angular-site"
+  "defaultProject": "alliance-bulletin"
 }

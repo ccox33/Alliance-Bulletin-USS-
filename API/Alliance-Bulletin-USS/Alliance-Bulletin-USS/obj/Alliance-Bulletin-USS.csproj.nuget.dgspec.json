@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Arcti\\Documents\\Classes 2022\\CSC 530 (SSP)\\Files\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj": {}
+    "C:\\Users\\Arcti\\Desktop\\Alliance-Bulletin-USS--main\\Alliance-Bulletin-USS--main\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Arcti\\Documents\\Classes 2022\\CSC 530 (SSP)\\Files\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj": {
+    "C:\\Users\\Arcti\\Desktop\\Alliance-Bulletin-USS--main\\Alliance-Bulletin-USS--main\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Arcti\\Documents\\Classes 2022\\CSC 530 (SSP)\\Files\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj",
+        "projectUniqueName": "C:\\Users\\Arcti\\Desktop\\Alliance-Bulletin-USS--main\\Alliance-Bulletin-USS--main\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj",
         "projectName": "Alliance-Bulletin-USS",
-        "projectPath": "C:\\Users\\Arcti\\Documents\\Classes 2022\\CSC 530 (SSP)\\Files\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj",
+        "projectPath": "C:\\Users\\Arcti\\Desktop\\Alliance-Bulletin-USS--main\\Alliance-Bulletin-USS--main\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj",
         "packagesPath": "C:\\Users\\Arcti\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Arcti\\Documents\\Classes 2022\\CSC 530 (SSP)\\Files\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\obj\\",
+        "outputPath": "C:\\Users\\Arcti\\Desktop\\Alliance-Bulletin-USS--main\\Alliance-Bulletin-USS--main\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Arcti\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,6 +43,20 @@
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
               "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.23, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.23, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.23, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",

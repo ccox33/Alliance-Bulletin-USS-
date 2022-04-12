@@ -11,11 +11,56 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Serialization;
+using Microsoft.Net.Http.Headers;
 
 namespace Alliance_Bulletin_USS
 {
     public class Startup
     {
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            var origins = new List<string>();
+            origins.Add("http://localhost:4200");
+
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseHttpsRedirection();
+            app.UseRouting();
+            app.UseAuthorization();
+            app.UseCors(config =>
+            {
+                config
+                    .WithOrigins(origins.ToArray())
+                    .WithHeaders(
+                        HeaderNames.Accept,
+                        HeaderNames.Authorization,
+                        HeaderNames.ContentType,
+                        HeaderNames.From,
+                        HeaderNames.Origin,
+                        "X-Requested-With",
+                        HeaderNames.AccessControlAllowOrigin
+                    )
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
+            });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+        }
+
+
+
+
+
+
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -45,25 +90,25 @@ namespace Alliance_Bulletin_USS
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+        //public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        //{
+        //    app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+        //    if (env.IsDevelopment())
+        //    {
+        //        app.UseDeveloperExceptionPage();
+        //    }
 
-            app.UseHttpsRedirection();
+        //    app.UseHttpsRedirection();
 
-            app.UseRouting();
+        //    app.UseRouting();
 
-            app.UseAuthorization();
+        //    app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-        }
+        //    app.UseEndpoints(endpoints =>
+        //    {
+        //        endpoints.MapControllers();
+        //    });
+        //}
     }
 }

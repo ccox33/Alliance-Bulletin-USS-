@@ -27,7 +27,8 @@ namespace Alliance_Bulletin_USS
             if (!optionsBuilder.IsConfigured)
             {
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(@"server=USSDEVSQLSV;database=TechnicalBullitenDB;user id=sa;pwd=Alliance&*****;");
+                
+                optionsBuilder.UseSqlServer(@"Data Source=LAPTOP-M90KU6VR;Initial Catalog=TechnicalBullitenDB;Integrated Security=True;MultipleActiveResultSets=True");
             }
         }
 

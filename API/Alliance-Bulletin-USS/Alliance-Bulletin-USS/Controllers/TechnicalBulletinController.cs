@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Data;
 using Alliance_Bulletin_USS.Models;
 using Alliance_Bulletin_USS.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Alliance_Bulletin_USS.Controllers
 {
@@ -47,7 +48,7 @@ namespace Alliance_Bulletin_USS.Controllers
 
             //return new JsonResult(table);
         //}
-        [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         [HttpGet("GetAllSoftwareTypes")]
         public IActionResult GetAllSoftwareTypes()
         {

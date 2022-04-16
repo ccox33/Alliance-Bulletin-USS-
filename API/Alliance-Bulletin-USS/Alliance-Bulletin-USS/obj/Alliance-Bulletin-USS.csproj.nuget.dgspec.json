@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Arcti\\Desktop\\Alliance-Bulletin-USS--main\\Alliance-Bulletin-USS--main\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj": {}
+    "C:\\Users\\Arcti\\Documents\\Classes 2022\\CSC 530 (SSP)\\GitClone\\Alliance-Bulletin-USS-\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Arcti\\Desktop\\Alliance-Bulletin-USS--main\\Alliance-Bulletin-USS--main\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj": {
+    "C:\\Users\\Arcti\\Documents\\Classes 2022\\CSC 530 (SSP)\\GitClone\\Alliance-Bulletin-USS-\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Arcti\\Desktop\\Alliance-Bulletin-USS--main\\Alliance-Bulletin-USS--main\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj",
+        "projectUniqueName": "C:\\Users\\Arcti\\Documents\\Classes 2022\\CSC 530 (SSP)\\GitClone\\Alliance-Bulletin-USS-\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj",
         "projectName": "Alliance-Bulletin-USS",
-        "projectPath": "C:\\Users\\Arcti\\Desktop\\Alliance-Bulletin-USS--main\\Alliance-Bulletin-USS--main\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj",
+        "projectPath": "C:\\Users\\Arcti\\Documents\\Classes 2022\\CSC 530 (SSP)\\GitClone\\Alliance-Bulletin-USS-\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj",
         "packagesPath": "C:\\Users\\Arcti\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Arcti\\Desktop\\Alliance-Bulletin-USS--main\\Alliance-Bulletin-USS--main\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\obj\\",
+        "outputPath": "C:\\Users\\Arcti\\Documents\\Classes 2022\\CSC 530 (SSP)\\GitClone\\Alliance-Bulletin-USS-\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Arcti\\AppData\\Roaming\\NuGet\\NuGet.Config",

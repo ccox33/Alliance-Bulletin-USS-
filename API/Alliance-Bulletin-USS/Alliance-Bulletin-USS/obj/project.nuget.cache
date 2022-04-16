@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dfdUYkRTnyPEvG5GDamy4rJRirJy/ImXseCmKROyxb+Kc5znC+jPD6AG3QOIsmCvKU/WGXgmqR5a+KPDdAnWag==",
+  "dgSpecHash": "bbadXyZV1yjfWa65df6RmNbKlMTJ8FPBLJWLIuTRqKn+w5qGGd5T9T6LU4H+BWWYEkvn8MZyZ33Eg+s0x7hUeg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Arcti\\Desktop\\Alliance-Bulletin-USS--main\\Alliance-Bulletin-USS--main\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj",
+  "projectFilePath": "C:\\Users\\Arcti\\Documents\\Classes 2022\\CSC 530 (SSP)\\GitClone\\Alliance-Bulletin-USS-\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Arcti\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.9\\microsoft.aspnetcore.jsonpatch.3.1.9.nupkg.sha512",
     "C:\\Users\\Arcti\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.9\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.9.nupkg.sha512",

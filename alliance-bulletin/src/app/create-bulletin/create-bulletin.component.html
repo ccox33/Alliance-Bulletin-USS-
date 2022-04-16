@@ -1,0 +1,38 @@
+<body>
+    <div>
+        <h1>Create Bulletin</h1>
+    </div>
+
+        <section class = "container">
+            <form [formGroup]="bulletinForm" (ngSubmit)="onSubmit()">
+                <div class = "field">
+                    <label class="label">Subject*</label>
+                    <input type="text" name="subject" class="input" formControlName="subject">
+                </div>
+
+                <div class = "field">
+                    <label class="label">Software/Versions Affected*</label>
+                    <textarea name="software" class="textarea" formControlName="software" ></textarea>
+                </div>
+
+                <div class = "field">
+                    <label class="label">Symptom/Bug*</label>
+                    <textarea name="symptom" class="textarea" formControlName="symptom"></textarea>
+                </div>
+
+                <div class = "field">
+                    <label class="label">Solution*</label>
+                    <textarea name="solution" class="textarea" formControlName="solution"></textarea>
+                </div>
+            
+                <div>
+                    <label class="label">Additional Notes</label>
+                    <textarea name="notes" class="textarea" formControlName="notes"></textarea>
+                </div>
+
+                <p>*Required Field</p><br>
+                    <button type="submit" class="button" [disabled]="!bulletinForm.valid">Create</button>
+                    <button type="submit" class="button">Discard</button>
+            </form> 
+        </section>
+    </body>

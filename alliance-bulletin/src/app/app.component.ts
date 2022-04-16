@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   template: `
     <app-header></app-header>
-    <app-create-bulletin></app-create-bulletin>
-    <app-login></app-login>
     <router-outlet></router-outlet>
     <app-footer></app-footer>
   `,
   styles: []
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'alliance-bulletin';
+
+  ngOnInit(): void {
+  }
 }

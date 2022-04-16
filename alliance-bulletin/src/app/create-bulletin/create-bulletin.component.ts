@@ -1,40 +1,45 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { auto } from '@popperjs/core';
 
 @Component({
   selector: 'app-create-bulletin',
-  template: `
-    <body>
-      <h1>Create Bulletin</h1>
-
-      <form id="createForm" action="/action_page.php" autocomplete="on">
-        <label for="SBsubject">Subject*</label><br>
-        <input type="text" id="SBsubject" name="SBsubject" value=""><br><br>
-
-        <label for="lname">Software/Versions Affected*</label><br>
-        <input type="text" id="SBsoftware" name="SBsoftware" value=""><br><br>
-
-        <label for="lname">Symptom/Bug*</label><br>
-        <input type="text" id="SBsymptom" name="SBsymptom" value=""><br><br>
-
-        <label for="lname">Solution*</label><br>
-        <input type="text" id="SBsolution" name="SBsolution" value=""><br><br>
-
-        <label for="lname">Additional Notes</label><br>
-        <input type="text" id="SBadditionalnotes" name="SBadditionalnotes" value=""><br><br>
-
-        <input class="button" type="submit" value="Submit">
-      </form> 
-      <p>*Required Field</p>
-    </body>
-  `,
-  styles: [
-  ]
+  templateUrl: "./create-bulletin.component.html",
+  styleUrls: ["./create-bulletin.component.css"]
 })
 export class CreateBulletinComponent implements OnInit {
 
+  bulletinForm = new FormGroup({
+    subject: new FormControl(''),
+    software: new FormControl(''),
+    symptom: new FormControl(''),
+    solution: new FormControl(''),
+    notes: new FormControl('')
+  });
+
+  config = {
+    placeholder: '',
+    tabsize: 2,
+    height: 200,
+    uploadImagePath: '/api/upload',
+    toolbar: [
+        ['misc', ['codeview', 'undo', 'redo']],
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+        ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+        ['fontsize', ['fontname', 'fontsize', 'color']],
+        ['para', ['style', 'ul', 'ol', 'paragraph', 'height']],
+        ['insert', ['table', 'picture', 'link', 'video', 'hr']]
+    ],
+    fontNames: ['Helvetica', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Roboto', 'Times']
+  }
+
+  onSubmit(){
+    console.warn(this.bulletinForm.value);
+  };
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

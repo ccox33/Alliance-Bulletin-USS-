@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxSummernoteModule } from 'ngx-summernote';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
-import { NavigateBulletinsComponent } from './navigate-bulletins/navigate-bulletins.component';
 import { CreateBulletinComponent } from './create-bulletin/create-bulletin.component';
 
 @NgModule({
@@ -14,12 +17,14 @@ import { CreateBulletinComponent } from './create-bulletin/create-bulletin.compo
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    NavigateBulletinsComponent,
     CreateBulletinComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxSummernoteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

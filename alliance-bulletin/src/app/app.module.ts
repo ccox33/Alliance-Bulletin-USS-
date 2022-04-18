@@ -10,6 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { CreateBulletinComponent } from './create-bulletin/create-bulletin.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { PDFGenComponent } from './components/pdf-gen/pdf-gen.component'
 
 @NgModule({
   declarations: [
@@ -17,14 +19,16 @@ import { CreateBulletinComponent } from './create-bulletin/create-bulletin.compo
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    CreateBulletinComponent
+    CreateBulletinComponent,
+    PDFGenComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxSummernoteModule
+    NgxSummernoteModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

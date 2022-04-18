@@ -25,14 +25,19 @@ export class DataService {
   // This method can be used for both updating and Creating new Bulletins
   // Needs a local Bulletin model using forms to translate to the API
   // New Bulletins are entered into the system with an ID of 0.
-  public updateBulletin(bulletin: Bulletin) : Observable<any>
+  public updateBulletin(val: any) : Observable<any>
   {
-
-    return this.http.post<string>(`${this.url}TechnicalBulletin/SaveModel`, bulletin)
+    return this.http.post<string>(`${this.url}TechnicalBulletin/Post`, val)
       .pipe(
         map((res: string) => {
           return res;
         })
       );
+  }
+
+  // Takes an ID and deletes a bulletin
+  public deleteBulletin(val: any) : Observable<any>
+  {
+    return this.http.delete<string>(`${this.url}TechnicalBulletin/Delete`, val);
   }
 }

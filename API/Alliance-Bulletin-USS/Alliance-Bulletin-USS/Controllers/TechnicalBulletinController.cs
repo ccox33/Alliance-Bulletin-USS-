@@ -57,6 +57,7 @@ namespace Alliance_Bulletin_USS.Controllers
             return Ok(softwareTypes);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public JsonResult Post(Bulletin bulletin)
         {

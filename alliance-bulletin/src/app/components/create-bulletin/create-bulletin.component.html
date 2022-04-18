@@ -7,22 +7,22 @@
             <form [formGroup]="bulletinForm" (ngSubmit)="onSubmit()">
                 <div class = "field">
                     <label class="label">Subject*</label>
-                    <input type="text" name="subject" class="input" formControlName="subject">
+                    <input type="text" name="subject" class="input" formControlName="subject" [(ngModel)]="subject" required>
                 </div>
 
                 <div class = "field">
                     <label class="label">Software/Versions Affected*</label>
-                    <textarea name="software" class="textarea" formControlName="software" ></textarea>
+                    <textarea name="software" class="textarea" formControlName="software" required></textarea>
                 </div>
 
                 <div class = "field">
                     <label class="label">Symptom/Bug*</label>
-                    <textarea name="symptom" class="textarea" formControlName="symptom"></textarea>
+                    <textarea name="symptom" class="textarea" formControlName="symptom" required></textarea>
                 </div>
 
                 <div class = "field">
                     <label class="label">Solution*</label>
-                    <textarea name="solution" class="textarea" formControlName="solution"></textarea>
+                    <textarea name="solution" class="textarea" formControlName="solution" required></textarea>
                 </div>
             
                 <div>
@@ -31,7 +31,7 @@
                 </div>
 
                 <p>*Required Field</p><br>
-                    <button type="submit" class="button" [disabled]="!bulletinForm.valid">Create</button>
+                    <button type="submit" class="button">Create</button>
                     <button type="submit" class="button">Discard</button>
             </form> 
         </section>

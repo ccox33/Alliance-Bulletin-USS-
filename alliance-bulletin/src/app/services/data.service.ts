@@ -22,12 +22,22 @@ export class DataService {
       );
   }
 
+public getBulletin(modelID: number) : Observable<any>
+{
+  return this.http.get<string>(`${this.url}TechnicalBulletin/GetBulletin/` + modelID)
+      .pipe(
+        map((res: string) => {
+          return res;
+        })
+      );
+}
+
   // This method can be used for both updating and Creating new Bulletins
   // Needs a local Bulletin model using forms to translate to the API
   // New Bulletins are entered into the system with an ID of 0.
-  public updateBulletin(val: any) : Observable<any>
+  public updateBulletin(values: any) : Observable<any>
   {
-    return this.http.post<string>(`${this.url}TechnicalBulletin/Post`, val)
+    return this.http.post<string>(`${this.url}TechnicalBulletin/Post`, values)
       .pipe(
         map((res: string) => {
           return res;
@@ -36,8 +46,8 @@ export class DataService {
   }
 
   // Takes an ID and deletes a bulletin
-  public deleteBulletin(val: any) : Observable<any>
+  public deleteBulletin(modelID: number) : Observable<any>
   {
-    return this.http.delete<string>(`${this.url}TechnicalBulletin/Delete`, val);
+    return this.http.delete<string>(`${this.url}TechnicalBulletin/Delete/` + modelID);
   }
 }

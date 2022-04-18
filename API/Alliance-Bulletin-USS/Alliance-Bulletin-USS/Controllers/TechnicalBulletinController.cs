@@ -28,26 +28,36 @@ namespace Alliance_Bulletin_USS.Controllers
         //[HttpGet]
         //public JsonResult Get()
         //{
-            //Simple unsafe query TO CHANGE LATER
-            //string query = @"select BulletinID DateCreated Topic";
-            //DataTable table = new DataTable();
-            //string sqlDataSource = _configuration.GetConnectionString("BulletinDBCon");
-            //SqlDataReader myReader;
-            //using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-            //{
-            //    myCon.Open();
-            //    using (SqlCommand myCommand = new SqlCommand(query, myCon))
-            //    {
-            //        myReader = myCommand.ExecuteReader();
-            //        table.Load(myReader); ;
+        //Simple unsafe query TO CHANGE LATER
+        //string query = @"select BulletinID DateCreated Topic";
+        //DataTable table = new DataTable();
+        //string sqlDataSource = _configuration.GetConnectionString("BulletinDBCon");
+        //SqlDataReader myReader;
+        //using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+        //{
+        //    myCon.Open();
+        //    using (SqlCommand myCommand = new SqlCommand(query, myCon))
+        //    {
+        //        myReader = myCommand.ExecuteReader();
+        //        table.Load(myReader); ;
 
-            //        myReader.Close();
-            //        myCon.Close();
-            //    }
-            //}
-
-            //return new JsonResult(table);
+        //        myReader.Close();
+        //        myCon.Close();
+        //    }
         //}
+
+        //return new JsonResult(table);
+        //}
+
+        [AllowAnonymous]
+        [HttpGet("GetBulletin")]
+        public IActionResult GetModel(int modelID)
+        {
+            List<String> bulletinModel = _bulletinRepo.GetModel();
+
+            return Ok(bulletinModel);
+        }
+
         [AllowAnonymous]
         [HttpGet("GetAllSoftwareTypes")]
         public IActionResult GetAllSoftwareTypes()

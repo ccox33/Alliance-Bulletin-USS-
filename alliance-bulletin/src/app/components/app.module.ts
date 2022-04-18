@@ -11,7 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { CreateBulletinComponent } from './create-bulletin/create-bulletin.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { PDFGenComponent } from './components/pdf-gen/pdf-gen.component'
+import { PDFGenComponent } from './pdf-gen/pdf-gen.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { PDFGenComponent } from './components/pdf-gen/pdf-gen.component'
     FooterComponent,
     LoginComponent,
     CreateBulletinComponent,
-    PDFGenComponent
+   // PDFGenComponent
   ],
   imports: [
     BrowserModule,

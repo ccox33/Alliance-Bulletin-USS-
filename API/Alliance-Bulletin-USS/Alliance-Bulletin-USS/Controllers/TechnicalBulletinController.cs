@@ -53,7 +53,7 @@ namespace Alliance_Bulletin_USS.Controllers
         [HttpGet("GetBulletin")]
         public IActionResult GetModel(int modelID)
         {
-            List<String> bulletinModel = _bulletinRepo.GetModel();
+            Bulletin bulletinModel = _bulletinRepo.GetModel(modelID);
 
             return Ok(bulletinModel);
         }

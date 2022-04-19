@@ -8,12 +8,6 @@ import { auto } from '@popperjs/core';
   styleUrls: ["./create-bulletin.component.css"]
 })
 export class CreateBulletinComponent implements OnInit {
-  subject: string = "";
-  software: string = "";
-  symptom: string = "";
-  solution: string = "";
-  notes: string = "";
-
 
   bulletinForm = new FormGroup({
     subject: new FormControl(''),

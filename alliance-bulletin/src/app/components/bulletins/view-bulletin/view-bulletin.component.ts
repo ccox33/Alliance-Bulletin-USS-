@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Bulletin } from 'src/app/bulletin.interface';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { DataService } from 'src/app/services/data.service';
 export class ViewBulletinComponent implements OnInit {
 
   public ds : DataService;
+  public testBulletin : Bulletin;
 
   constructor(public datas : DataService) 
   {
@@ -21,7 +23,9 @@ export class ViewBulletinComponent implements OnInit {
 
   getBulletin(modelID: number){
     
-    this.ds.getBulletin(modelID).subscribe((res) => console.log(res))
+    this.ds.getBulletin(modelID).subscribe((res) => {
+      this.testBulletin = res;
+    })
     
   }
 

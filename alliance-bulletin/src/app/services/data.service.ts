@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
+import { Bulletin } from '../bulletin.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -22,15 +23,37 @@ export class DataService {
       );
   }
 
-public getBulletin(modelID: number) : Observable<any>
+// Legacy Get method in case things go worng in the universal get method.
+public getBulletin(modelID: number) : Observable<Bulletin>
 {
-  return this.http.get<string>(`${this.url}TechnicalBulletin/GetBulletin/` + modelID)
+
+  const params = new HttpParams()
+  .set('modelID', modelID.toString());;
+
+  // can be changed to
+  return this.http.get<Bulletin>(`${this.url}TechnicalBulletin/GetBulletin/`, { params: params })
       .pipe(
-        map((res: string) => {
+        map((res: Bulletin) => {
           return res;
         })
       );
 }
+
+/**
+   * @param {number} id
+   * @param {string} modelName
+   * @returns {Observable<any>}
+   */
+ public getByID(id: number, modelName: string): Observable<any> {
+  const params = new HttpParams()
+  .set('id', id.toString());
+  return this.http.get<any>(`${this.url}TechnicalBulletin/Get${modelName}?token=${localStorage.getItem('AllianceServiceToken')}`, { params: params })
+    .pipe(
+      map((res: any) => {
+        return res;
+      }),
+    );
+  }
 
   // This method can be used for both updating and Creating new Bulletins
   // Needs a local Bulletin model using forms to translate to the API

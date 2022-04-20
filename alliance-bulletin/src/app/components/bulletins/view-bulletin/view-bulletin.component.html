@@ -1,0 +1,61 @@
+<body>
+    <div class ="main-bulletin">
+
+        <!--Bulletin Header-->
+        <p>
+
+        </p>
+
+        <!--Bulletin Info-->
+        <table>
+            <!--ID-->
+            <tr>
+                <td>BulletinId</td>
+                <td>{{testBulletin?.bulletinId}}</td>
+            </tr>
+            <!--Date-->
+            <tr>
+                <td>Date Created: {{testBulletin?.dateCreated}}</td>
+                <td>Date Modified: {{testBulletin?.dateModified}}</td>
+            </tr>
+            <!--Subject-->
+            <tr>
+                <td>Subject</td>
+                <td>{{testBulletin?.topic}}</td>
+            </tr>
+            <!--Software-->
+            <tr>
+                <td>Software/Versions Affected: </td>
+                <td>Date Modified: {{testBulletin?.dateModified}}</td>
+            </tr>
+        </table>
+
+        <!--Main Text-->
+        <h3>Symptom/Bug</h3>
+        <p>
+            {{testBulletin?.symptom}}
+        </p>
+        <h3>Solution</h3>
+        <p>
+            {{testBulletin?.resolution}}
+        </p>
+        <h3>Additional Notes</h3>
+        <p>
+            {{testBulletin?.notes}}
+        </p>
+
+        <!--Bulletin Footer-->
+        <p>
+
+        </p>
+
+    </div>
+
+    <div class="Bulletin Options">
+        <!--
+        Export to PDF option in dev
+        <button class="pdf-button" (click)="downloadAsPDF()">Export to PDF</button>
+        -->
+    </div>
+
+</body>

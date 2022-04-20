@@ -2,15 +2,15 @@
 
 export interface Bulletin {
 
-    BulletinId: number;
-    DateCreated: Date;
-    Topic: String;
-    Software: String;
-    Symptom: String;
-    Resolution: String;
-    Notes: String;
-    Noteimage: String;
-    IsDeleted: Boolean;
-    DateModified: Date;
+    bulletinId: number;
+    dateCreated: Date;
+    topic: String;
+    software: String;
+    symptom: String;
+    resolution: String;
+    notes: String;
+    noteimage: String;
+    isDeleted: Boolean;
+    dateModified: Date;
 
 }

@@ -46,7 +46,7 @@ public getBulletin(modelID: number) : Observable<Bulletin>
    */
  public getByID(id: number, modelName: string): Observable<any> {
   const params = new HttpParams()
-  .set('id', id.toString());
+  .set('modelID', id.toString());
   return this.http.get<any>(`${this.url}TechnicalBulletin/Get${modelName}?token=${localStorage.getItem('AllianceServiceToken')}`, { params: params })
     .pipe(
       map((res: any) => {
@@ -71,6 +71,9 @@ public getBulletin(modelID: number) : Observable<Bulletin>
   // Takes an ID and deletes a bulletin
   public deleteBulletin(modelID: number) : Observable<any>
   {
-    return this.http.delete<string>(`${this.url}TechnicalBulletin/Delete/` + modelID);
+    const params = new HttpParams()
+    .set('modelID', modelID.toString());;
+
+    return this.http.delete<string>(`${this.url}TechnicalBulletin/Delete/`, { params: params });
   }
 }

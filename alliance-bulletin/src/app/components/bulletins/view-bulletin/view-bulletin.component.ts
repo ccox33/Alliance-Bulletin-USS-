@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Bulletin } from 'src/app/bulletin.interface';
 import { DataService } from 'src/app/services/data.service';
 
@@ -9,12 +10,12 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ViewBulletinComponent implements OnInit {
 
-  public ds : DataService;
+  public dataService : DataService;
   public testBulletin : Bulletin;
 
-  constructor(public datas : DataService) 
+  constructor(public dataServiceInput : DataService) 
   {
-    this.ds = datas;
+    this.dataService = dataServiceInput;
     //this.ds.getAllSoftware().subscribe((res) => console.log(res))
   }
 
@@ -23,10 +24,9 @@ export class ViewBulletinComponent implements OnInit {
 
   getBulletin(modelID: number){
     
-    this.ds.getBulletin(modelID).subscribe((res) => {
+    this.dataService.getBulletin(modelID).subscribe((res) => {
       this.testBulletin = res;
     })
     
   }
-
 }

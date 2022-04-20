@@ -4,34 +4,26 @@
     </div>
         <section class = "container">
             <form [formGroup]="bulletinForm">
-                <div class="field">
-                    <label class="label" for="subject">Subject<span style="color: red">*</span></label>
-                    <input type="text" id="subject" class="form-control" formControlName="subject">
-                </div>
 
-                <div class = "field">
-                    <label class="label">Software/Versions Affected<span style="color: red">*</span></label>
-                    <textarea id="software" class="form-control" formControlName="software"></textarea>
-                </div>
+                <label class="label" for="subject">Subject<span style="color: red">*</span></label>
+                <div [ngxSummernote]="config" id="subject" formControlName="subject"></div>
+                
+                <label class="label">Software/Versions Affected<span style="color: red">*</span></label>
+                <div [ngxSummernote]="config" id="software" formControlName="software"></div>
 
-                <div class = "field">
-                    <label class="label">Symptom/Bug<span style="color: red">*</span></label>
-                    <textarea id="symptom" class="form-control" formControlName="symptom"></textarea>
-                </div>
+              
+                <label class="label">Symptom/Bug<span style="color: red">*</span></label>
+                <div [ngxSummernote]="config" id="symptom" formControlName="symptom"></div>
 
-                <div class = "field">
-                    <label class="label">Solution<span style="color: red">*</span></label>
-                    <textarea id="solution" class="form-control" formControlName="solution"></textarea>
-                </div>
-            
-                <div>
-                    <label class="label">Additional Notes</label>
-                    <textarea id="notes" class="form-control" formControlName="notes"></textarea>
-                </div>
+                <label class="label">Solution<span style="color: red">*</span></label>
+                <div [ngxSummernote]="config" id="solution" formControlName="solutiom"></div>
+
+                <label class="label">Additional Notes</label>
+                <div [ngxSummernote]="config" id="name" formControlName="subject"></div>
 
                 <p><span style="color: red">*Required Field</span></p><br>
-                    <button type="submit" class="button" [disabled]="!bulletinForm.valid" (click)="create()">Create</button>
-                    <button type="submit" class="button" (click)="discard()"routerLink="/navigate-bulletins">Discard</button>
+                <button type="submit" class="button" [disabled]="!bulletinForm.valid" (click)="create()">Create</button>
+                <button type="submit" class="button" (click)="discard()"routerLink="/navigate-bulletins">Discard</button>
             </form> 
         </section>
     </body>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import { jsPDF } from 'jspdf';
-import { deepStrictEqual } from 'assert';
+//import { jsPDF } from 'jspdf';
+//import { deepStrictEqual } from 'assert';
 
 @Component({
   selector: 'app-pdf-gen',
@@ -23,15 +23,15 @@ export class PDFGenComponent implements OnInit {
 
   downloadPDF(){
     console.log('downloading pdf ...');
-    const doc = new jsPDF;
+   // const doc = new jsPDF;
 
-    doc.text('Bulletin PDF', 15, 15);
+   // doc.text('Bulletin PDF', 15, 15);
 
     let testString: string = "";
     this.ds.getAllSoftware().subscribe((res) => testString = res)
-    doc.text(testString, 15, 50);
+   // doc.text(testString, 15, 50);
 
-    doc.save('first.pdf');
+    //doc.save('first.pdf');
   }
 
 }

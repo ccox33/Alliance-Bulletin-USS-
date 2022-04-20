@@ -1,5 +1,9 @@
-import { Injectable } from '@angular/core';
+import { ElementRef, Injectable } from '@angular/core';
 import jsPDF from 'jspdf';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import htmlToPdfmake from 'html-to-pdfmake';
 import { DataService } from './data.service';
 
 @Injectable({
@@ -17,16 +21,15 @@ import { DataService } from './data.service';
     ngOnInit(): void {
     }
   
-    downloadPDF(){
+    downloadPDF(pdfInput: ElementRef){
       console.log('downloading pdf ...');
-      const doc = new jsPDF;
-  
-      doc.text('Bulletin PDF', 15, 15);
-  
-      let testString: string = "";
-      this.dataService.getAllSoftware().subscribe((res) => testString = res)
-      doc.text(testString, 15, 50);
-  
-      doc.save('first.pdf');
+      const doc = new jsPDF();
+
+      const nativeInputElement = pdfInput.nativeElement;
+
+      var html = htmlToPdfmake(nativeInputElement.innerHTML);
+
+      const documentDef = {content: html};
+      pdfMake.createPdf(documentDef).open();
     }
   }

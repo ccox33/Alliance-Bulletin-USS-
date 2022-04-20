@@ -1,3 +1,7 @@
 .button {
     background-color:#0076BC;
 }
+
+::ng-deep .dropdown-toggle::after{
+    display: none !important;
+}

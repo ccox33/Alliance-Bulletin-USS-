@@ -7,6 +7,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
 
 .button {
     background-color:#0076BC;
+    color: white;
 }
 
 body{
@@ -21,4 +22,9 @@ body{
     /* Set the fixed height of the footer here */
     height: 60px;
     line-height: 60px;
+  }
+
+  h1{
+      font-family: Verdana;
+      color: black;
   }

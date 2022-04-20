@@ -1,5 +1,19 @@
-.button {
-    position: absolute;
-    top:50%;
+#login {
     background-color:#0076BC;
+    position: center;
+    top:50%;
+}
+
+input{
+    height: 40px;
+    width: 250px;
+    position: center;
+    margin: 10px 550px;
+}
+
+div.login-form{
+    text-align: center;
+    position: center;
+    margin-left: auto;
+    margin-right: auto;
 }

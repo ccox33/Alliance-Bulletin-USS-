@@ -1,13 +1,14 @@
 <body class = "hero is-fullheight">
-    <form id="loginForm">
+    <form [formGroup]="loginForm">
       <br><h1>&nbsp;Please Login</h1><br>
-        <div style="text-align: center;">
-            <label for="username"><strong>Username:&nbsp;</strong></label>
-            <input type="text" id="username" name="username" value=""><br><br>
-  
-            <label for="password"><strong>Password:&nbsp;</strong></label>
-            <input type="text" id="password" name="password" value=""><br><br>
-            <input class="button" type="submit" value="login" routerLink="/navigate-bulletins">
+        <div class = "login-form">
+            <label for="username"><strong>Username:</strong></label>
+            <input type="text" id="username" class="form-control" formControlName="username" required><br><br>
+
+            <label for="password"><strong>Password:</strong></label>
+            <input type="text" id="password" class="form-control" formControlName="password" required><br><br>
+
+            <button class="button" id="login" type="submit"[disabled]="!loginForm.valid" routerLink="/navigate-bulletins">Login</button>
         </div>
     </form> 
 </body>

@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Bulletin } from 'src/app/bulletin.interface';
-import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-view-bulletin',
@@ -10,23 +7,9 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ViewBulletinComponent implements OnInit {
 
-  public dataService : DataService;
-  public testBulletin : Bulletin;
-
-  constructor(public dataServiceInput : DataService) 
-  {
-    this.dataService = dataServiceInput;
-    //this.ds.getAllSoftware().subscribe((res) => console.log(res))
-  }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  getBulletin(modelID: number){
-    
-    this.dataService.getBulletin(modelID).subscribe((res) => {
-      this.testBulletin = res;
-    })
-    
-  }
 }

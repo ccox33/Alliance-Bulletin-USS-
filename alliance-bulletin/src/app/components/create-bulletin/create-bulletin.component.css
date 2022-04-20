@@ -1,3 +1,8 @@
 .button {
     background-color:#0076BC;
 }
+
+textarea {
+    width: 1130px;
+    height: 200px;
+}

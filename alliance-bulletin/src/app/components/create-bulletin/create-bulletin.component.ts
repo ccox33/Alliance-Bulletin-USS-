@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { auto } from '@popperjs/core';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-bulletin',
@@ -8,12 +8,11 @@ import { auto } from '@popperjs/core';
   styleUrls: ["./create-bulletin.component.css"]
 })
 export class CreateBulletinComponent implements OnInit {
-
   bulletinForm = new FormGroup({
-    subject: new FormControl(''),
-    software: new FormControl(''),
-    symptom: new FormControl(''),
-    solution: new FormControl(''),
+    subject: new FormControl('',  Validators.required),
+    software: new FormControl('',  Validators.required),
+    symptom: new FormControl('',  Validators.required),
+    solution: new FormControl('',  Validators.required),
     notes: new FormControl('')
   });
 
@@ -33,10 +32,17 @@ export class CreateBulletinComponent implements OnInit {
     fontNames: ['Helvetica', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Roboto', 'Times']
   }
 
-  onSubmit(){
+  create(){
     console.warn(this.bulletinForm.value);
     alert("Are you sure you want to submit this form?");
+    console.warn(this.bulletinForm.value);
   };
+
+  discard() {
+    alert("Are you sure you want to discard this form?\nYou will be routed back to the navigation page.");
+    this.bulletinForm.reset;
+  }
+
   constructor() { }
 
   ngOnInit(): void {

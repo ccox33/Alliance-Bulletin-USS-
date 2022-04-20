@@ -2,37 +2,36 @@
     <div>
         <h1>Create Bulletin</h1>
     </div>
-
         <section class = "container">
-            <form [formGroup]="bulletinForm" (ngSubmit)="onSubmit()">
-                <div class = "field">
-                    <label class="label">Subject*</label>
-                    <input type="text" name="subject" class="input" formControlName="subject" [(ngModel)]="subject" required>
+            <form [formGroup]="bulletinForm">
+                <div class="field">
+                    <label class="label" for="subject">Subject<span style="color: red">*</span></label>
+                    <input type="text" id="subject" class="form-control" formControlName="subject">
                 </div>
 
                 <div class = "field">
-                    <label class="label">Software/Versions Affected*</label>
-                    <textarea name="software" class="textarea" formControlName="software" required></textarea>
+                    <label class="label">Software/Versions Affected<span style="color: red">*</span></label>
+                    <textarea id="software" class="form-control" formControlName="software"></textarea>
                 </div>
 
                 <div class = "field">
-                    <label class="label">Symptom/Bug*</label>
-                    <textarea name="symptom" class="textarea" formControlName="symptom" required></textarea>
+                    <label class="label">Symptom/Bug<span style="color: red">*</span></label>
+                    <textarea id="symptom" class="form-control" formControlName="symptom"></textarea>
                 </div>
 
                 <div class = "field">
-                    <label class="label">Solution*</label>
-                    <textarea name="solution" class="textarea" formControlName="solution" required></textarea>
+                    <label class="label">Solution<span style="color: red">*</span></label>
+                    <textarea id="solution" class="form-control" formControlName="solution"></textarea>
                 </div>
             
                 <div>
                     <label class="label">Additional Notes</label>
-                    <textarea name="notes" class="textarea" formControlName="notes"></textarea>
+                    <textarea id="notes" class="form-control" formControlName="notes"></textarea>
                 </div>
 
-                <p>*Required Field</p><br>
-                    <button type="submit" class="button">Create</button>
-                    <button type="submit" class="button">Discard</button>
+                <p><span style="color: red">*Required Field</span></p><br>
+                    <button type="submit" class="button" [disabled]="!bulletinForm.valid" (click)="create()">Create</button>
+                    <button type="submit" class="button" (click)="discard()"routerLink="/navigate-bulletins">Discard</button>
             </form> 
         </section>
     </body>

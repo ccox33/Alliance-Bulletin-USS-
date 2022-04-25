@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ColDef } from 'ag-grid-community';
+import { ColDef, GridApi, GridOptions } from 'ag-grid-community';
 //https://www.ag-grid.com/eula/AG-Grid-Community-License.html
 
 @Component({
@@ -8,6 +8,8 @@ import { ColDef } from 'ag-grid-community';
   styleUrls: ["./navigate-bulletins.component.css"]
 })
 export class NavigateBulletinsComponent {
+
+  private gridApi!: GridApi;
 
   public columnDefs: ColDef[] = [
       { headerName: 'Date', 
@@ -55,6 +57,12 @@ export class NavigateBulletinsComponent {
       { date: '11/25/2020', id: '25', subject: 'Another problem with main software, bug in code.', software: "D6652 v3.4, D88521 v1.2, D52365 v2.0" },
       { date: '11/23/2021', id: '03', subject: 'Big problem with main software, bug in code.', software: "D0752 v3.4, D88521 v1.2, D52365 v2.0" }
   ];
+
+  onSelectionChanged() {
+    const selectedRows = this.gridApi.getSelectedRows();
+    (document.querySelector('#selectedRows') as any).innerHTML =
+      selectedRows.length === 1 ? selectedRows[0].athlete : '';
+  }
 }
 
 function replaceAccents(value: string) {

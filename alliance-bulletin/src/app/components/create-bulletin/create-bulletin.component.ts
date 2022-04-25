@@ -20,7 +20,6 @@ export class CreateBulletinComponent implements OnInit {
     placeholder: '',
     tabsize: 2,
     height: 200,
-    uploadImagePath: '/api/upload',
     toolbar: [
         ['misc', ['codeview', 'undo', 'redo']],
         ['style', ['bold', 'italic', 'underline', 'clear']],

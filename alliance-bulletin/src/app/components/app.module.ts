@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { CreateBulletinComponent } from './create-bulletin/create-bulletin.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CreateBulletinComponent } from './create-bulletin/create-bulletin.compo
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxSummernoteModule
+    NgxSummernoteModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ColDef, GridApi, GridOptions } from 'ag-grid-community';
+import { ColDef, GridApi } from 'ag-grid-community';
 //https://www.ag-grid.com/eula/AG-Grid-Community-License.html
 
 @Component({

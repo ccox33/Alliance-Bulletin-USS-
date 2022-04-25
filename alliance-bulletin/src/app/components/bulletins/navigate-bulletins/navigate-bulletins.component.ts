@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ColDef } from 'ag-grid-community';
+//https://www.ag-grid.com/eula/AG-Grid-Community-License.html
 
 @Component({
   selector: 'app-navigate-bulletins',

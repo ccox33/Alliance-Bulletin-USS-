@@ -12,6 +12,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Serialization;
 using Microsoft.Net.Http.Headers;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Alliance_Bulletin_USS
 {
@@ -21,6 +24,7 @@ namespace Alliance_Bulletin_USS
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             var origins = new List<string>();
             origins.Add("http://localhost:4200");
 
@@ -31,6 +35,9 @@ namespace Alliance_Bulletin_USS
 
             app.UseHttpsRedirection();
             app.UseRouting();
+
+            app.UseAuthentication();
+
             app.UseAuthorization();
             app.UseCors(config =>
             {
@@ -75,6 +82,36 @@ namespace Alliance_Bulletin_USS
             services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
+
+            // Authentication
+            var key = Encoding.ASCII.GetBytes("TELL_NO_ONE_7890355789342675");
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.Events = new JwtBearerEvents
+                {
+                    OnTokenValidated = context =>
+                    {
+                        // After Authentication
+                        // Add claims
+                        return Task.CompletedTask;
+                    }
+                };
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
             });
 
             // JSON Serializer

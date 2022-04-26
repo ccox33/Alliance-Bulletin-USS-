@@ -6,8 +6,8 @@
             <input type="text" id="username" class="form-control" formControlName="username" required><br><br>
 
             <label for="password"><strong>Password:</strong></label>
-            <input type="text" id="password" class="form-control" formControlName="password" required><br><br>
-
+            <input type="password" id="password" class="form-control" formControlName="password" required>
+            <br><br>
             <button class="button" id="login" type="submit"[disabled]="!loginForm.valid" routerLink="/navigate-bulletins">Login</button>
         </div>
     </form> 

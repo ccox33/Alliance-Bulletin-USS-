@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AgGridModule } from 'ag-grid-angular';
+//https://www.ag-grid.com/eula/AG-Grid-Community-License.html
+import { ClipboardModule } from 'ngx-clipboard';
+//https://github.com/maxisam/ngx-clipboard/blob/master/LICENSE
 
 import { BulletinsRoutingModule } from './bulletins-routing.module';
 import { NavigateBulletinsComponent } from './navigate-bulletins/navigate-bulletins.component';
@@ -15,7 +18,8 @@ import { ViewBulletinComponent } from './view-bulletin/view-bulletin.component';
   imports: [
     CommonModule,
     BulletinsRoutingModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    ClipboardModule
   ]
 })
 export class BulletinsModule { }

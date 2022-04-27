@@ -28,4 +28,8 @@ export class ViewBulletinComponent implements OnInit {
     })
 
   }
+
+  copied() {
+    alert("The link to this bulletin has been copied to your clipboard.");
+  }
 }

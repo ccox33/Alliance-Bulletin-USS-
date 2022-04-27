@@ -56,6 +56,6 @@
         Export to PDF option in dev
         <button class="pdf-button" (click)="downloadAsPDF()">Export to PDF</button>
         -->
+        <button class="button" ngxClipboard [cbContent]="'bulletins.united-systems.com/{{testBulletin?.bulletinId}}'" (click)="copied()">Copy Link to Share</button>
     </div>
-
 </body>

@@ -43,6 +43,7 @@ export class CreateBulletinComponent implements OnInit {
     console.warn(this.bulletinForm.value);
     alert("Are you sure you want to submit this form?");
     console.warn(this.bulletinForm.value);
+    this.postBulletin()
   };
 
   discard() {
@@ -72,8 +73,11 @@ export class CreateBulletinComponent implements OnInit {
 
   }
 
+  
+
   postBulletin() {
     this.selectedBulletin.bulletinId = this.selectedID;
+
     this.selectedBulletin.topic = this.bulletinForm.get('subject').value;
     this.selectedBulletin.software = this.bulletinForm.get('software').value;
     this.selectedBulletin.symptom = this.bulletinForm.get('symptom').value;

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ColDef, GridApi } from 'ag-grid-community';
+import * as internal from 'stream';
 //https://www.ag-grid.com/eula/AG-Grid-Community-License.html
 
 @Component({
@@ -10,6 +12,11 @@ import { ColDef, GridApi } from 'ag-grid-community';
 export class NavigateBulletinsComponent {
 
   private gridApi!: GridApi;
+  public bulletinID : number;
+
+  constructor(public router: Router) {
+
+  }
 
   public columnDefs: ColDef[] = [
       { headerName: 'Date', 
@@ -64,6 +71,17 @@ export class NavigateBulletinsComponent {
       selectedRows.length === 1 ? selectedRows[0].athlete : '';
   }
 
+  public goToCreatePage() : void {
+    let selectedID = this.bulletinID ? this.bulletinID : null;
+    this.router.navigate(['create-bulletin', 0]);
+    
+  }
+  
+  public goToEditPage() : void {
+    let selectedID = this.bulletinID ? this.bulletinID : null;
+    this.router.navigate(['create-bulletin', selectedID]);
+  }
+
 }
 
 function replaceAccents(value: string) {
@@ -110,14 +128,5 @@ function monthToComparableNumber(date: string) {
   return yearNumber * 10000 + monthNumber * 100 + dayNumber;
 }
 
-function goToCreatePage() {
-  let selectedID = this.bulletinID ? this.bulletinID : null;
-  this.router.navigate(['create-bulletin', 0]);
-  
-}
 
-function goToEditPage() {
-  let selectedID = this.bulletinID ? this.bulletinID : null;
-  this.router.navigate(['create-bulletin', selectedID]);
-}
 

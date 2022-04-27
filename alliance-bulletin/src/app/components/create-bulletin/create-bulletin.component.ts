@@ -83,4 +83,11 @@ export class CreateBulletinComponent implements OnInit {
     this.dataService.updateBulletin(this.selectedBulletin);
   }
 
+  deleteBulletin() {
+    if (this.selectedID != 0)
+    {
+      this.dataService.updateBulletin(this.selectedID);
+    }
+  }
+
 }

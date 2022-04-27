@@ -63,6 +63,7 @@ export class NavigateBulletinsComponent {
     (document.querySelector('#selectedRows') as any).innerHTML =
       selectedRows.length === 1 ? selectedRows[0].athlete : '';
   }
+
 }
 
 function replaceAccents(value: string) {
@@ -108,3 +109,15 @@ function monthToComparableNumber(date: string) {
   const dayNumber = Number.parseInt(date.substring(0, 2));
   return yearNumber * 10000 + monthNumber * 100 + dayNumber;
 }
+
+function goToCreatePage() {
+  let selectedID = this.bulletinID ? this.bulletinID : null;
+  this.router.navigate(['create-bulletin', 0]);
+  
+}
+
+function goToEditPage() {
+  let selectedID = this.bulletinID ? this.bulletinID : null;
+  this.router.navigate(['create-bulletin', selectedID]);
+}
+

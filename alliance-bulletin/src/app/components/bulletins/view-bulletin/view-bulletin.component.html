@@ -11,37 +11,37 @@
             <!--ID-->
             <tr>
                 <td>BulletinId</td>
-                <td>{{testBulletin?.bulletinId}}</td>
+                <td>{{selectedBulletin?.bulletinId}}</td>
             </tr>
             <!--Date-->
             <tr>
-                <td>Date Created: {{testBulletin?.dateCreated}}</td>
-                <td>Date Modified: {{testBulletin?.dateModified}}</td>
+                <td>Date Created: {{selectedBulletin?.dateCreated}}</td>
+                <td>Date Modified: {{selectedBulletin?.dateModified}}</td>
             </tr>
             <!--Subject-->
             <tr>
                 <td>Subject</td>
-                <td>{{testBulletin?.topic}}</td>
+                <td>{{selectedBulletin?.topic}}</td>
             </tr>
             <!--Software-->
             <tr>
                 <td>Software/Versions Affected: </td>
-                <td>Date Modified: {{testBulletin?.dateModified}}</td>
+                <td>Date Modified: {{selectedBulletin?.dateModified}}</td>
             </tr>
         </table>
 
         <!--Main Text-->
         <h3>Symptom/Bug</h3>
         <p>
-            {{testBulletin?.symptom}}
+            {{selectedBulletin?.symptom}}
         </p>
         <h3>Solution</h3>
         <p>
-            {{testBulletin?.resolution}}
+            {{selectedBulletin?.resolution}}
         </p>
         <h3>Additional Notes</h3>
         <p>
-            {{testBulletin?.notes}}
+            {{selectedBulletin?.notes}}
         </p>
 
         <!--Bulletin Footer-->

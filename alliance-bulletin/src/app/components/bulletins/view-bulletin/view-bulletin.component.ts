@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Bulletin } from 'src/app/bulletin.interface';
 import { DataService } from 'src/app/services/data.service';
 
@@ -9,22 +10,29 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ViewBulletinComponent implements OnInit {
 
+  public selectedID;
   public dataService : DataService;
-  public testBulletin : Bulletin;
+  public selectedBulletin : Bulletin;
 
-  constructor(public dataServiceInput : DataService) 
+  constructor(private route: ActivatedRoute, public dataServiceInput : DataService) 
   {
     this.dataService = dataServiceInput;
     //this.ds.getAllSoftware().subscribe((res) => console.log(res))
   }
 
   ngOnInit(): void {
+    let id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.selectedID = id;
+    if (this.selectedID > 0)
+    {
+      this.getBulletin(this.selectedID);
+    }
   }
 
   getBulletin(modelID: number){
 
     this.dataService.getBulletin(modelID).subscribe((res) => {
-      this.testBulletin = res;
+      this.selectedBulletin = res;
     })
 
   }

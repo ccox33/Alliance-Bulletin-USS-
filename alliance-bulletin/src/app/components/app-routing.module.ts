@@ -5,7 +5,7 @@ import { CreateBulletinComponent } from './create-bulletin/create-bulletin.compo
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full'},
-  { path: 'create-bulletin', component: CreateBulletinComponent },
+  { path: 'create-bulletin/:id', component: CreateBulletinComponent },
   { path: 'navigate-bulletins', loadChildren: () => import('./bulletins/bulletins.module').then(m => m.BulletinsModule)}
 ];
 

@@ -51,6 +51,8 @@ export class NavigateBulletinsComponent {
       }
   ];
 
+  rowModelType = 'infinite';
+
   rowData = [
       { date: '11/20/2019', id: '01', subject: 'Problem with main software, bug in code.', software: "D0152 v3.4, D88521 v1.2, D52365 v2.0" },
       { date: '11/25/2021', id: '02', subject: 'A problem with main software, bug in code.', software: "D0052 v3.4, D88521 v1.2, D52365 v2.0" },

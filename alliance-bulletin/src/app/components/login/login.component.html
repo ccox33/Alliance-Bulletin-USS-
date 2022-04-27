@@ -8,6 +8,8 @@
             <label for="password"><strong>Password:</strong></label>
             <input type="password" id="password" class="form-control" formControlName="password" required>
 
+            <button (click)="openMicrosoftSignIn()">Microsoft</button>
+
             <button class="button" id="login" type="submit"[disabled]="!loginForm.valid" routerLink="/navigate-bulletins">Login</button>
         </div>
     </form> 

@@ -20,6 +20,8 @@
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
+    "@azure/msal-angular": "^2.2.0",
+    "@azure/msal-browser": "^2.23.0",
     "@popperjs/core": "^2.11.4",
     "ag-grid-angular": "^27.1.1",
     "ag-grid-community": "^27.1.0",

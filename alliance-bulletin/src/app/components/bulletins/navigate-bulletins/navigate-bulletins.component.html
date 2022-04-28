@@ -1,17 +1,51 @@
 <body class = "hero is-fullheight">
   <h1>Technical Bulletin</h1>
   <div>  
-    <input class="button" type="submit" value="Create" routerLink="/create-bulletin">
+    <button (click)="goToCreatePage()" class="button" >Create</button>>
   </div>
   <section class = "container">
-    <!--[rowModelType]="rowModelType"-->
-    <ag-grid-angular
-        style="width: 1000px; height: 450px;"
-        class="ag-theme-balham"
-        [rowData]="rowData"
-        [columnDefs]="columnDefs"
-        (selectionChanged)="onSelectionChanged()"
-        [pagination]="true">
-    </ag-grid-angular>
+    <wj-flex-grid #grid
+      [itemsSource]="serverView"
+      [allowSorting]="true"
+      [selectionMode]="false"
+      [headersVisibility]="'Column'">
+
+      <wj-flex-grid-column
+        [header]="'Date'"
+        [binding]="'dateModified'"
+        [width]="'*'"
+        [minWidth]="100"
+        align="center"
+        [wordWrap]="true">
+      </wj-flex-grid-column>
+
+      <wj-flex-grid-column
+        [header]="'ID'"
+        [binding]="'bulletinId'"
+        [width]="'*'"
+        align="center"
+        [wordWrap]="true">
+        <!-- [visible]="screenWidth >= 576"> -->
+      </wj-flex-grid-column>
+
+      <wj-flex-grid-column
+        [header]="'Subject'"
+        [binding]="'topic'"
+        [width]="'*'"
+        [minWidth]="100"
+        align="center"
+        [wordWrap]="true">
+      </wj-flex-grid-column>
+
+      <wj-flex-grid-column
+        [header]="'Software'"
+        [binding]="'software'"
+        [width]="'*'"
+        align="center"
+        [wordWrap]="true">
+        <!-- [visible]="screenWidth >= 576"> -->
+      </wj-flex-grid-column>
+
+    </wj-flex-grid>
   </section>
 </body>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Bulletin } from 'src/app/bulletin.interface';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-create-bulletin',
@@ -8,6 +11,11 @@ import { Validators } from '@angular/forms';
   styleUrls: ["./create-bulletin.component.css"]
 })
 export class CreateBulletinComponent implements OnInit {
+
+  public selectedID = 0;
+  public dataService : DataService;
+  public selectedBulletin : Bulletin;
+
   bulletinForm = new FormGroup({
     subject: new FormControl('',  Validators.required),
     software: new FormControl('',  Validators.required),
@@ -35,6 +43,7 @@ export class CreateBulletinComponent implements OnInit {
     console.warn(this.bulletinForm.value);
     alert("Are you sure you want to submit this form?");
     console.warn(this.bulletinForm.value);
+    this.postBulletin()
   };
 
   discard() {
@@ -42,10 +51,45 @@ export class CreateBulletinComponent implements OnInit {
     this.bulletinForm.reset;
   }
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, public dataServiceInput : DataService) 
+  {
+    this.dataService = dataServiceInput;
+  }
 
   ngOnInit(): void {
+    let id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.selectedID = id;
+    if (this.selectedID > 0)
+    {
+      this.getBulletin(this.selectedID);
+    }
+  }
 
+  getBulletin(modelID: number){
+
+    this.dataService.getBulletin(modelID).subscribe((res) => {
+      this.selectedBulletin = res;
+    })
+
+  }
+
+  postBulletin() {
+    this.selectedBulletin.bulletinId = this.selectedID;
+
+    this.selectedBulletin.topic = this.bulletinForm.get('subject').value;
+    this.selectedBulletin.software = this.bulletinForm.get('software').value;
+    this.selectedBulletin.symptom = this.bulletinForm.get('symptom').value;
+    this.selectedBulletin.resolution = this.bulletinForm.get('solution').value;
+    this.selectedBulletin.notes = this.bulletinForm.get('notes').value;
+
+    this.dataService.updateBulletin(this.selectedBulletin);
+  }
+
+  deleteBulletin() {
+    if (this.selectedID != 0)
+    {
+      this.dataService.updateBulletin(this.selectedID);
+    }
   }
 
 }

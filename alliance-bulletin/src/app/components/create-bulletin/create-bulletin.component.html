@@ -19,7 +19,7 @@
                 <div [ngxSummernote]="config" id="solution" formControlName="solution"></div>
 
                 <label class="label">Additional Notes</label>
-                <div [ngxSummernote]="config" id="name" formControlName="subject"></div>
+                <div [ngxSummernote]="config" id="notes" formControlName="notes"></div>
 
                 <p><span style="color: red">*Required Field</span></p><br>
                 <button type="submit" class="button" [disabled]="!bulletinForm.valid" (click)="create()">Create</button>

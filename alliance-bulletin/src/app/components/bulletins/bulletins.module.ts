@@ -9,6 +9,8 @@ import { BulletinsRoutingModule } from './bulletins-routing.module';
 import { NavigateBulletinsComponent } from './navigate-bulletins/navigate-bulletins.component';
 import { ViewBulletinComponent } from './view-bulletin/view-bulletin.component';
 
+import { WjGridModule } from '@grapecity/wijmo.angular2.grid';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { ViewBulletinComponent } from './view-bulletin/view-bulletin.component';
     CommonModule,
     BulletinsRoutingModule,
     AgGridModule.withComponents([]),
-    ClipboardModule
+    ClipboardModule,
+    WjGridModule
   ]
 })
 export class BulletinsModule { }

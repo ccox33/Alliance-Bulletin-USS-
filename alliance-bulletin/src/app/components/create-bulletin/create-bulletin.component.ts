@@ -73,8 +73,6 @@ export class CreateBulletinComponent implements OnInit {
 
   }
 
-  
-
   postBulletin() {
     this.selectedBulletin.bulletinId = this.selectedID;
 

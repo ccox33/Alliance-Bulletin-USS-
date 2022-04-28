@@ -25,30 +25,6 @@ namespace Alliance_Bulletin_USS.Controllers
             _bulletinRepo = new BulletinRepository();
         }
 
-        //[HttpGet]
-        //public JsonResult Get()
-        //{
-        //Simple unsafe query TO CHANGE LATER
-        //string query = @"select BulletinID DateCreated Topic";
-        //DataTable table = new DataTable();
-        //string sqlDataSource = _configuration.GetConnectionString("BulletinDBCon");
-        //SqlDataReader myReader;
-        //using (SqlConnection myCon = new SqlConnection(sqlDataSource))
-        //{
-        //    myCon.Open();
-        //    using (SqlCommand myCommand = new SqlCommand(query, myCon))
-        //    {
-        //        myReader = myCommand.ExecuteReader();
-        //        table.Load(myReader); ;
-
-        //        myReader.Close();
-        //        myCon.Close();
-        //    }
-        //}
-
-        //return new JsonResult(table);
-        //}
-
         [AllowAnonymous]
         [HttpGet("GetBulletin")]
         public IActionResult GetModel(int modelID)
@@ -56,6 +32,15 @@ namespace Alliance_Bulletin_USS.Controllers
             Bulletin bulletinModel = _bulletinRepo.GetModel(modelID);
 
             return Ok(bulletinModel);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("GetBulletins")]
+        public IActionResult GetBulletins()
+        {
+            List<Bulletin> bulletinModels = _bulletinRepo.GetBulletins();
+
+            return Ok(bulletinModels);
         }
 
         [AllowAnonymous]
@@ -86,6 +71,7 @@ namespace Alliance_Bulletin_USS.Controllers
             return new JsonResult("Failed");
         }
 
+        [AllowAnonymous]
         [HttpDelete("{id}")]
         public JsonResult Delete(int bulletinID)
         {

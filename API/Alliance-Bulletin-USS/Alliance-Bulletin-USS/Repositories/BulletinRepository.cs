@@ -24,7 +24,7 @@ namespace Alliance_Bulletin_USS.Repositories
             return model;
         }
 
-        public List<Bulletin> GetModels()
+        public List<Bulletin> GetBulletins()
         {
             List<Bulletin> models = null;
 

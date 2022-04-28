@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ColDef, GridApi } from 'ag-grid-community';
-import * as internal from 'stream';
+//import * as internal from 'stream';
+import * as wjCore from '@grapecity/wijmo';
+import * as wjGrid from '@grapecity/wijmo.angular2.grid';
+import { WjGridModule, WjFlexGrid } from '@grapecity/wijmo.angular2.grid';
+import { CollectionView } from '@grapecity/wijmo'
+import { Bulletin } from 'src/app/bulletin.interface';
+import { DataService } from 'src/app/services/data.service';
+import { BrowserModule } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
 //https://www.ag-grid.com/eula/AG-Grid-Community-License.html
 
 @Component({
@@ -11,53 +18,33 @@ import * as internal from 'stream';
 })
 export class NavigateBulletinsComponent {
 
-  private gridApi!: GridApi;
-  public bulletinID : number;
+  public dataService : DataService;
+  public bulletinRes : Observable<any>;
+  public serverView = new wjCore.CollectionView();
+  @ViewChild('flex') flex: WjFlexGrid;
 
-  constructor(public router: Router) {
+  public selectedBulletinID : number;
 
+  //this.ds.getAllSoftware().subscribe((res) => console.log(res))
+
+  constructor(public router: Router, public dataServiceInput : DataService) {
+    this.dataService = dataServiceInput;
+    this.dataService.getBulletins().subscribe((res) => console.log(res))
+  }
+ 
+  public ngOnInit(): void {
+    this.fillGrid();
   }
 
-  public columnDefs: ColDef[] = [
-      { headerName: 'Date', 
-        field: 'date', 
-        comparator: dateComparator,
-        width: 150,
-        sortable: true,
-        filter: true,
-        floatingFilter:true
-      },
-      { headerName: 'Bulletin ID', 
-        field: 'id', 
-        sortable: true,  
-        width: 150,
-        filter: true,
-        floatingFilter: true
-      },
-      { headerName: 'Subject', 
-        field: 'subject', 
-        sortable: true, 
-        width: 400,
-        filter: true,
-        floatingFilter:true,
-        filterParams: {
-          caseSensitive: false,
-          filterParams
-        }
-      },
-      { headerName: 'Affected Software', 
-        field: 'software', 
-        sortable: true, 
-        width: 300,
-        filter: true,
-        floatingFilter:true,
-        filterParams: {
-          caseSensitive: false,
-          filterParams
-        }
-      }
-  ];
+  public fillGrid() : void {
+    //this.dataService.getBulletins().subscribe((res) => this.bulletinRes)
 
+    // Bulletin Data Models to array of data that the CollectionView "serverView" can process.
+
+    //this.serverView.sourceCollection = this.bulletinRes;
+  }
+
+  // Example data of bulletin Row.
   rowData = [
       { date: '11/20/2019', id: '01', subject: 'Problem with main software, bug in code.', software: "D0152 v3.4, D88521 v1.2, D52365 v2.0" },
       { date: '11/25/2021', id: '02', subject: 'A problem with main software, bug in code.', software: "D0052 v3.4, D88521 v1.2, D52365 v2.0" },
@@ -65,20 +52,15 @@ export class NavigateBulletinsComponent {
       { date: '11/23/2021', id: '03', subject: 'Big problem with main software, bug in code.', software: "D0752 v3.4, D88521 v1.2, D52365 v2.0" }
   ];
 
-  onSelectionChanged() {
-    const selectedRows = this.gridApi.getSelectedRows();
-    (document.querySelector('#selectedRows') as any).innerHTML =
-      selectedRows.length === 1 ? selectedRows[0].athlete : '';
-  }
-
+ 
   public goToCreatePage() : void {
-    let selectedID = this.bulletinID ? this.bulletinID : null;
+    let selectedID = this.selectedBulletinID ? this.selectedBulletinID : null;
     this.router.navigate(['create-bulletin', 0]);
     
   }
   
   public goToEditPage() : void {
-    let selectedID = this.bulletinID ? this.bulletinID : null;
+    let selectedID = this.selectedBulletinID ? this.selectedBulletinID : null;
     this.router.navigate(['create-bulletin', selectedID]);
   }
 

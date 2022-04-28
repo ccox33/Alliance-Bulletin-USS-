@@ -23,6 +23,16 @@ export class DataService {
       );
   }
 
+  public getBulletins() : Observable<any>
+  {
+    return this.http.get<Array<Bulletin>>(`${this.url}TechnicalBulletin/GetBulletins`)
+      .pipe(
+        map((res: Array<Bulletin>) => {
+          return res;
+        })
+      );
+  }
+
 // Legacy Get method in case things go worng in the universal get method.
 public getBulletin(modelID: number) : Observable<Bulletin>
 {

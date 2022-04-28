@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { jsPDF } from 'jspdf';
+import { pdfMake } from 'pdfmake/build/pdfmake';
+import { pdfFonts } from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import { htmlToPdfmake } from 'html-to-pdfmake';
 import { Bulletin } from 'src/app/bulletin.interface';
 import { DataService } from 'src/app/services/data.service';
 
@@ -13,6 +18,8 @@ export class ViewBulletinComponent implements OnInit {
   public selectedID;
   public dataService : DataService;
   public selectedBulletin : Bulletin;
+
+  @ViewChild('mainBulletin') pdfBulletin: ElementRef;
 
   constructor(private route: ActivatedRoute, public dataServiceInput : DataService) 
   {
@@ -35,6 +42,18 @@ export class ViewBulletinComponent implements OnInit {
       this.selectedBulletin = res;
     })
 
+  }
+
+  downloadAsPDF(){
+    console.log('downloading pdf ...');
+
+    const doc = new jsPDF();
+    const pdfElement = this.pdfBulletin.nativeElement;
+    let html = htmlToPdfmake(pdfElement.innerHTML);
+    const documentDefinition = {content: html};
+    
+    pdfMake.createPdf(documentDefinition).open();
+    //doc.save('first.pdf');
   }
 
   copied() {

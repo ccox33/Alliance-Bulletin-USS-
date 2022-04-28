@@ -4,11 +4,21 @@
     <button (click)="goToCreatePage()" class="button" >Create</button>>
   </div>
   <section class = "container">
+    
+    <div class="toolbar-item col-sm-3 col-md-5">
+      <wj-flex-grid-search [placeholder]="'Search'" [grid]="flex" cssMatch="">
+      </wj-flex-grid-search>
+    </div>
+
     <wj-flex-grid #grid
       [itemsSource]="serverView"
       [allowSorting]="true"
       [selectionMode]="false"
       [headersVisibility]="'Column'">
+
+      <wj-flex-grid-filter
+      [filterColumns]="['id', 'date', 'time', 'countryId', 'productId', 'colorId', 'price', 'change', 'discount', 'rating', 'active']">
+      </wj-flex-grid-filter>
 
       <wj-flex-grid-column
         [header]="'Date'"

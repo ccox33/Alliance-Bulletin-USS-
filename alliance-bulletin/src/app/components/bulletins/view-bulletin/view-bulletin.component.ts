@@ -3,7 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { jsPDF } from 'jspdf';
 import { pdfMake } from 'pdfmake/build/pdfmake';
 import { pdfFonts } from 'pdfmake/build/vfs_fonts';
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+//pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { htmlToPdfmake } from 'html-to-pdfmake';
 import { Bulletin } from 'src/app/bulletin.interface';
 import { DataService } from 'src/app/services/data.service';

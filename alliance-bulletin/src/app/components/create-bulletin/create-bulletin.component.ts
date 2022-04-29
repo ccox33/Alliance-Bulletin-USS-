@@ -15,6 +15,7 @@ export class CreateBulletinComponent implements OnInit {
   public selectedID = 0;
   public dataService : DataService;
   public selectedBulletin : Bulletin;
+  public isAuthorizedUser: boolean = false;
 
   bulletinForm = new FormGroup({
     subject: new FormControl('',  Validators.required),

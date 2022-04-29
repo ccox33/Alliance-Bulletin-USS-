@@ -1,12 +1,33 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
 import { CreateBulletinComponent } from './create-bulletin/create-bulletin.component';
+import { MsalGuard } from '@azure/msal-angular';
+import { NavigateBulletinsComponent } from './navigate-bulletins/navigate-bulletins.component';
+import { ViewBulletinComponent } from './view-bulletin/view-bulletin.component';
+
+//Zachary Orr from the United Systems team helped with the routing module and adding the login functionality.
 
 const routes: Routes = [
-  { path: '', component: LoginComponent, pathMatch: 'full'},
-  { path: 'create-bulletin/:id', component: CreateBulletinComponent },
-  { path: 'navigate-bulletins', loadChildren: () => import('./bulletins/bulletins.module').then(m => m.BulletinsModule)}
+  { 
+    path: '', 
+    component: NavigateBulletinsComponent,
+    canActivate: [MsalGuard]
+  },
+  { 
+    path: 'navigate-bulletins', 
+    component: NavigateBulletinsComponent,
+    canActivate: [MsalGuard]
+  },
+  { 
+    path: 'create-bulletin/:id', 
+    component: CreateBulletinComponent,
+    canActivate: [MsalGuard]
+  },
+  {
+    path: ':bulletinID', 
+    component: ViewBulletinComponent,
+    canActivate: [MsalGuard]
+  }
 ];
 
 @NgModule({

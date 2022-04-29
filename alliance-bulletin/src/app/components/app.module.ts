@@ -11,9 +11,19 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { CreateBulletinComponent } from './create-bulletin/create-bulletin.component';
-import { HttpClientModule } from '@angular/common/http';
-import { MsalModule } from '@azure/msal-angular';
-import { PublicClientApplication } from '@azure/msal-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MsalGuard, MsalInterceptor, MsalModule } from '@azure/msal-angular';
+import { InteractionType, PublicClientApplication } from '@azure/msal-browser';
+
+import { CommonModule } from '@angular/common';
+import { ClipboardModule } from 'ngx-clipboard';
+//https://github.com/maxisam/ngx-clipboard/blob/master/LICENSE
+
+import { NavigateBulletinsComponent } from './navigate-bulletins/navigate-bulletins.component';
+import { ViewBulletinComponent } from './view-bulletin/view-bulletin.component';
+
+import { WjGridSearchModule } from '@grapecity/wijmo.angular2.grid.search';
+import { WjGridFilterModule } from '@grapecity/wijmo.angular2.grid.filter';
 
 @NgModule({
   declarations: [
@@ -21,7 +31,9 @@ import { PublicClientApplication } from '@azure/msal-browser';
     HeaderComponent,
     FooterComponent,
     LoginComponent,
-    CreateBulletinComponent
+    CreateBulletinComponent,
+    NavigateBulletinsComponent,
+    ViewBulletinComponent
   ],
   imports: [
     BrowserModule,
@@ -39,10 +51,31 @@ import { PublicClientApplication } from '@azure/msal-browser';
       cache: {
         cacheLocation: 'localStorage'
       }
-    }), null, null),
-    WjGridModule
+    }), {
+      interactionType: InteractionType.Redirect,
+      authRequest: {
+        scopes: ['user.read']
+      }
+  }, {
+    interactionType: InteractionType.Redirect,
+    protectedResourceMap: new Map([
+        ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+    ])
+  }),
+    WjGridModule,
+    CommonModule,
+    ClipboardModule,
+    WjGridSearchModule,
+    WjGridFilterModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
+    },
+    MsalGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

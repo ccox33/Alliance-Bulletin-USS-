@@ -1,36 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { MsalService } from '@azure/msal-angular';
 
 @Component({
   selector: 'app-header',
-  template: `
-    <div class= "navbar is-light">
-      <div class = "navbar-brand">
-        <a class = "navbar-item" href="https://united-systems.com/">
-            <img src = "assets/images/UnitedSystems.png">
-        </a>
-      </div>
-
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-light" routerLink="/">
-              Log in
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  `,
+  templateUrl: "./header.component.html",
   styles: [
   ]
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authService: MsalService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  //Zachary Orr from the United Systems team helped with this functionality.
+  public logOut() {
+    this.authService.logoutRedirect({
+      postLogoutRedirectUri: 'http://localhost:4200'
+    })
   }
 
 }

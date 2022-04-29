@@ -7,7 +7,8 @@ import { Bulletin } from '../bulletin.interface';
   providedIn: 'root'
 })
 export class DataService {
-  public url : string = "https://bulletinsapi.united-systems.com/api/"
+  //public url : string = "https://bulletinsapi.united-systems.com/api/"
+  public url : string = "https://localhost:5000/api/"
   constructor(public http: HttpClient) 
   { 
 

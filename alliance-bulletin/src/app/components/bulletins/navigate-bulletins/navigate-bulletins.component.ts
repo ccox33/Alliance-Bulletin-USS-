@@ -21,7 +21,9 @@ export class NavigateBulletinsComponent {
 
   public dataService : DataService;
   public bulletinRes : Observable<any>;
+
   public serverView = new wjCore.CollectionView();
+
   @ViewChild('flex') flex: WjFlexGrid;
 
   public selectedBulletinID : number;
@@ -38,11 +40,8 @@ export class NavigateBulletinsComponent {
   }
 
   public fillGrid() : void {
-    //this.dataService.getBulletins().subscribe((res) => this.bulletinRes)
-
-    // Bulletin Data Models to array of data that the CollectionView "serverView" can process.
-
-    //this.serverView.sourceCollection = this.bulletinRes;
+    this.dataService.getBulletins().subscribe((res) => 
+    this.serverView = new CollectionView(res, {}));
   }
 
   // Example data of bulletin Row.

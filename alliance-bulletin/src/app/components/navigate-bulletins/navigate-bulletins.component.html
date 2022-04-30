@@ -13,7 +13,8 @@
     <wj-flex-grid #grid
       [itemsSource]="serverView"
       [allowSorting]="true"
-      [selectionMode]="false"
+      [selectionMode]="'Row'"
+      [isReadOnly]="true"
       [headersVisibility]="'Column'">
 
       <wj-flex-grid-filter
@@ -43,7 +44,8 @@
         [binding]="'topic'"
         [width]="'*'"
         align="center"
-        [wordWrap]="true">
+        [wordWrap]="true"
+        cellTemplate="CellMaker.makeLink({text: '${item.topic}', href: '${item.bulletinId}', attributes: {tabindex: 0 }})">
       </wj-flex-grid-column>
 
       <wj-flex-grid-column
@@ -54,6 +56,14 @@
         [wordWrap]="true">
         <!-- [visible]="screenWidth >= 576"> -->
       </wj-flex-grid-column>
+
+      <!-- 
+      <wj-flex-grid-column [header]="" [width]="75" align="center">
+        <ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
+          <mat-icon class="edit-icon" (click)="openManageVendorTypeModal(cell)">edit</mat-icon>
+        </ng-template>
+      </wj-flex-grid-column>
+       -->
 
     </wj-flex-grid>
   </section>

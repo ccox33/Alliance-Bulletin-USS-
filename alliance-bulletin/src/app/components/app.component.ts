@@ -21,6 +21,7 @@ const GRAPH_ENDPOINT = 'https://graph.microsoft.com/v1.0/me';
 export class AppComponent implements OnInit, OnDestroy{
   title = 'alliance-bulletin';
   private readonly _destroying$ = new Subject<void>();
+  loggedInEmail: any;
 
 
   constructor(
@@ -55,9 +56,11 @@ export class AppComponent implements OnInit, OnDestroy{
     this.http.get(GRAPH_ENDPOINT)
       .subscribe(profile => {
         console.log(profile);
-        //this.loggedInEmail = profile.email;
-        //this.dataService.isAuthorizedUser(profile.email).subscribe((res) => {
-        //  this.isAuthorizedUser = res;
+        
+       this.loggedInEmail = profile["mail"];
+       console.log(this.loggedInEmail);
+       //this.DataService.isAuthorizedUser(this.loggedInEmail).subscribe((res) => {
+         // this.isAuthorizedUser = res;
         //})
       });
   }

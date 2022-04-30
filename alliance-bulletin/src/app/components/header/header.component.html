@@ -8,10 +8,12 @@
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-end">
       <div class="navbar-item">
-        <div class="buttons" (click)="logOut()">
-          <a class="button is-light">
-            Logout
-          </a>
+        <div class="dropdown is-active">
+          <div class="dropdown-trigger">
+            <a class="button is-light" (click)="logOut()">
+              Logout
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -4,8 +4,7 @@ import { MsalService } from '@azure/msal-angular';
 @Component({
   selector: 'app-header',
   templateUrl: "./header.component.html",
-  styles: [
-  ]
+  styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent implements OnInit {
 

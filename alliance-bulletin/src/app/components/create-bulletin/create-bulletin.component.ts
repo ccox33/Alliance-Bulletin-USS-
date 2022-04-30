@@ -89,6 +89,7 @@ export class CreateBulletinComponent implements OnInit {
   deleteBulletin() {
     if (this.selectedID != 0)
     {
+      alert("Are you sure you want to delete this form?\nYou will be routed back to the navigation page.");
       this.dataService.updateBulletin(this.selectedID);
     }
   }

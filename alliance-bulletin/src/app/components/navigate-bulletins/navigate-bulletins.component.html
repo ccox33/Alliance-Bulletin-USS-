@@ -14,6 +14,7 @@
       [itemsSource]="serverView"
       [allowSorting]="true"
       [selectionMode]="'Row'"
+      [isReadOnly]="true"
       [headersVisibility]="'Column'">
 
       <wj-flex-grid-filter
@@ -43,7 +44,8 @@
         [binding]="'topic'"
         [width]="'*'"
         align="center"
-        [wordWrap]="true">
+        [wordWrap]="true"
+        cellTemplate="CellMaker.makeLink({text: '${item.topic}', href: '${item.bulletinId}', attributes: {tabindex: 0 }})">
       </wj-flex-grid-column>
 
       <wj-flex-grid-column

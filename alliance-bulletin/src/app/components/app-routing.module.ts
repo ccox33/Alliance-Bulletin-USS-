@@ -24,7 +24,7 @@ const routes: Routes = [
     canActivate: [MsalGuard]
   },
   {
-    path: ':bulletinID', 
+    path: 'view-bulletin/:id', 
     component: ViewBulletinComponent,
     canActivate: [MsalGuard]
   }

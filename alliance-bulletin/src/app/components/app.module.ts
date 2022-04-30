@@ -24,6 +24,8 @@ import { ViewBulletinComponent } from './view-bulletin/view-bulletin.component';
 
 import { WjGridSearchModule } from '@grapecity/wijmo.angular2.grid.search';
 import { WjGridFilterModule } from '@grapecity/wijmo.angular2.grid.filter';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatMenu } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,7 @@ import { WjGridFilterModule } from '@grapecity/wijmo.angular2.grid.filter';
     LoginComponent,
     CreateBulletinComponent,
     NavigateBulletinsComponent,
-    ViewBulletinComponent
+    ViewBulletinComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +43,7 @@ import { WjGridFilterModule } from '@grapecity/wijmo.angular2.grid.filter';
     FormsModule,
     ReactiveFormsModule,
     NgxSummernoteModule,
+    MatMenu,
     HttpClientModule,
     MsalModule.forRoot(new PublicClientApplication({
       auth: {
@@ -66,7 +69,8 @@ import { WjGridFilterModule } from '@grapecity/wijmo.angular2.grid.filter';
     CommonModule,
     ClipboardModule,
     WjGridSearchModule,
-    WjGridFilterModule
+    WjGridFilterModule,
+    NoopAnimationsModule
   ],
   providers: [
     {

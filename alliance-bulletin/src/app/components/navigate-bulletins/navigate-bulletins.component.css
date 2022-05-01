@@ -1,7 +1,7 @@
 .button {
     background-color:#0076BC;
     color: white;
-    top:15%;
+    top:18%;
     left:81%;
     position: absolute;
 }
@@ -14,9 +14,19 @@ section{
 h1{
     margin-top: 1%;
     margin-left: 15px;
+    background-color: white;
+    border: 3px solid #2d9001;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 5px 5px 5px;
+    width: 75%;
 }
 .container{
-    padding: 50px 50px 50px 50x;
-    margin: 25px 100px 25px 250px;
-    position: absolute;
+    background-color: white;
+    border: 3px solid #2d9001;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 5px;
+    width: 75%;
 }

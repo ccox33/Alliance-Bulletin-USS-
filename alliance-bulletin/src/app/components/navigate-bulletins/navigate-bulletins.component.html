@@ -57,13 +57,14 @@
         <!-- [visible]="screenWidth >= 576"> -->
       </wj-flex-grid-column>
 
-      <!-- 
-      <wj-flex-grid-column [header]="" [width]="75" align="center">
+      <!--
+      <wj-flex-grid-column [header]="" [width]="75" [binding]="'bulletinId'" align="center">
         <ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
-          <mat-icon class="edit-icon" (click)="openManageVendorTypeModal(cell)">edit</mat-icon>
+          <button (click)="goToEditPage(${{item.?bulletinId}})"class="button" >Create</button>>
         </ng-template>
       </wj-flex-grid-column>
-       -->
+      -->
+       
 
     </wj-flex-grid>
   </section>

@@ -44,6 +44,13 @@ export class ViewBulletinComponent implements OnInit {
 
   }
 
+  deleteBulletin(){
+    if (this.selectedID > 0)
+    {
+      this.dataService.deleteBulletin(this.selectedID);
+    }
+  }
+
   downloadAsPDF(){
     console.log('downloading pdf ...');
 

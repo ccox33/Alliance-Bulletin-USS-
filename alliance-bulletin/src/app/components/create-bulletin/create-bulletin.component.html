@@ -1,29 +1,41 @@
 <body>
     <div>
-        <h1>Create Bulletin</h1>
+        <h1 class="pageLabel" id="pageLabel">Create Bulletin</h1>
     </div>
         <section class = "container">
             <form [formGroup]="bulletinForm">
 
+                <div class = "formBox">
                 <label class="label" for="subject">Subject<span style="color: red">*</span></label>
                 <div [ngxSummernote]="config" id="subject" formControlName="subject"></div>
+                </div>
                 
+                <div class = "formBox">
                 <label class="label">Software/Versions Affected<span style="color: red">*</span></label>
                 <div [ngxSummernote]="config" id="software" formControlName="software"></div>
+                </div>
 
-              
+                <div class = "formBox">
                 <label class="label">Symptom/Bug<span style="color: red">*</span></label>
                 <div [ngxSummernote]="config" id="symptom" formControlName="symptom"></div>
+                </div>
 
+                <div class = "formBox">
                 <label class="label">Solution<span style="color: red">*</span></label>
                 <div [ngxSummernote]="config" id="solution" formControlName="solution"></div>
+                </div>
 
+                <div class = "formBox">
                 <label class="label">Additional Notes</label>
                 <div [ngxSummernote]="config" id="notes" formControlName="notes"></div>
+                </div>
 
                 <p><span style="color: red">*Required Field</span></p><br>
-                <button type="submit" class="button" [disabled]="!bulletinForm.valid || !isAuthorizedUser" (click)="create()">Create</button>
+
+                <div class = "options">
+                <button type="submit" class="button" [disabled]="!bulletinForm.valid || !isAuthorizedUser" (click)="create()">Confirm</button>
                 <button type="submit" class="button" (click)="discard()" routerLink="/navigate-bulletins">Discard</button>
+                </div>
             </form> 
         </section>
     </body>

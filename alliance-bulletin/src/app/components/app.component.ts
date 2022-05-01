@@ -4,6 +4,8 @@ import { MsalBroadcastService, MsalGuardConfiguration, MSAL_GUARD_CONFIG } from 
 import { InteractionStatus } from '@azure/msal-browser';
 import * as wijmo from '@grapecity/wijmo';
 import { filter, Subject, takeUntil } from 'rxjs';
+import { DataService } from 'src/app/services/data.service';
+
 
 //Zachary Orr from the United SYstems team helped with the login functionality.
 
@@ -22,6 +24,8 @@ export class AppComponent implements OnInit, OnDestroy{
   title = 'alliance-bulletin';
   private readonly _destroying$ = new Subject<void>();
   loggedInEmail: any;
+  public dataService : DataService;
+  isAuthorizedUser: boolean;
 
 
   constructor(
@@ -59,9 +63,10 @@ export class AppComponent implements OnInit, OnDestroy{
         
        this.loggedInEmail = profile["mail"];
        console.log(this.loggedInEmail);
-       //this.DataService.isAuthorizedUser(this.loggedInEmail).subscribe((res) => {
-         // this.isAuthorizedUser = res;
-        //})
+       this.dataService.GetAuthorized(this.loggedInEmail).subscribe((res) => {
+        this.isAuthorizedUser = res;
+        })
+
       });
   }
 }

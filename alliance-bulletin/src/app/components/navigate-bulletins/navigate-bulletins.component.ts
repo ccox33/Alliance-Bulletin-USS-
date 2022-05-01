@@ -26,8 +26,6 @@ export class NavigateBulletinsComponent {
 
   @ViewChild('flex') flex: WjFlexGrid;
 
-  public selectedBulletinID : number;
-
   //this.ds.getAllSoftware().subscribe((res) => console.log(res))
 
   constructor(public router: Router, public dataServiceInput : DataService) {
@@ -52,19 +50,17 @@ export class NavigateBulletinsComponent {
       { date: '11/23/2021', id: '03', subject: 'Big problem with main software, bug in code.', software: "D0752 v3.4, D88521 v1.2, D52365 v2.0" }
   ];
  
-  public goToViewPage(): void {
-    let selectedID = this.selectedBulletinID ? this.selectedBulletinID : null;
+  public goToViewPage(selectedBulletinID: number): void {
+    let selectedID = selectedBulletinID? selectedBulletinID : null;
     this.router.navigate(['view-bulletin', selectedID]);
   }
 
   public goToCreatePage() : void {
-    let selectedID = this.selectedBulletinID ? this.selectedBulletinID : null;
     this.router.navigate(['create-bulletin', 0]);
-    
   }
   
-  public goToEditPage() : void {
-    let selectedID = this.selectedBulletinID ? this.selectedBulletinID : null;
+  public goToEditPage(selectedBulletinID: number) : void {
+    let selectedID = selectedBulletinID ? selectedBulletinID : null;
     this.router.navigate(['create-bulletin', selectedID]);
   }
 

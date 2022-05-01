@@ -1,13 +1,44 @@
 .button {
     background-color:#0076BC;
     color:white;
-    margin: 10px 15px 30px 20px;
+    margin: 10px 20px 10px 20px;
 }
 
 ::ng-deep .dropdown-toggle::after{
     display: none !important;
 }
 
-body{
+.pageLabel {
+    text-align: center;
     background-color: white;
+    border: 3px solid #2d9001;
+    border-radius: 10px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    box-shadow: 5px 5px 5px;
+    width: 20%;
+}
+
+.label {
+    padding-left: 5px;
+}
+
+.formBox {
+    background-color: white;
+    border: 3px solid #2d9001;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 5px;
+}
+
+.options {
+    background-color: rgba(45, 144, 1, 0.4);
+    
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 30px;
+    width: 25%;
 }

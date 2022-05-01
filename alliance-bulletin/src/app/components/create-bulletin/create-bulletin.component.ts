@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Bulletin } from 'src/app/bulletin.interface';
 import { DataService } from 'src/app/services/data.service';
 
@@ -44,7 +44,8 @@ export class CreateBulletinComponent implements OnInit {
     console.warn(this.bulletinForm.value);
     alert("Are you sure you want to submit this form?");
     console.warn(this.bulletinForm.value);
-    this.postBulletin()
+    this.postBulletin();
+    this.router.navigate(['navigate-bulletins']);
   };
 
   discard() {
@@ -52,7 +53,7 @@ export class CreateBulletinComponent implements OnInit {
     this.bulletinForm.reset;
   }
 
-  constructor(private route: ActivatedRoute, public dataServiceInput : DataService) 
+  constructor(public router: Router, private route: ActivatedRoute, public dataServiceInput : DataService) 
   {
     this.dataService = dataServiceInput;
   }
@@ -62,8 +63,19 @@ export class CreateBulletinComponent implements OnInit {
     this.selectedID = id;
     if (this.selectedID > 0)
     {
+      // The Title of the Page Label needs to be changed here
+      let pageLabel = document.getElementById("pageLabel")
+      pageLabel.innerText = "Edit Bulletin"
       this.getBulletin(this.selectedID);
+      
     }
+    else
+    {
+      this.dataService.createDefault().subscribe((res) => {
+        this.selectedBulletin = res;
+      })
+    }
+    console.warn(this.selectedID);
   }
 
   getBulletin(modelID: number){
@@ -76,6 +88,8 @@ export class CreateBulletinComponent implements OnInit {
 
   postBulletin() {
     this.selectedBulletin.bulletinId = this.selectedID;
+    
+    console.warn(this.selectedBulletin.bulletinId);
 
     this.selectedBulletin.topic = this.bulletinForm.get('subject').value;
     this.selectedBulletin.software = this.bulletinForm.get('software').value;

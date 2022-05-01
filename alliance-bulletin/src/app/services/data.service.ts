@@ -24,6 +24,26 @@ export class DataService {
       );
   }
 
+  public GetAuthorized(email: String) : Observable<boolean>
+{
+  return this.http.get<boolean>(`${this.url}TechnicalBulletin/GetAuthorized`)
+      .pipe(
+        map((res: boolean) => {
+          return res;
+        })
+      );
+}
+
+public createDefault() : Observable<Bulletin>
+{
+  return this.http.get<Bulletin>(`${this.url}TechnicalBulletin/CreateDefault`)
+      .pipe(
+        map((res: Bulletin) => {
+          return res;
+        })
+      );
+}
+
   public getBulletins() : Observable<any>
   {
     return this.http.get<Array<Bulletin>>(`${this.url}TechnicalBulletin/GetBulletins`)

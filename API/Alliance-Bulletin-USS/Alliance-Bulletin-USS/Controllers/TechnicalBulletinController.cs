@@ -27,6 +27,15 @@ namespace Alliance_Bulletin_USS.Controllers
 
         [AllowAnonymous]
         [HttpGet("GetBulletin")]
+        public IActionResult CreateDefault()
+        {
+            Bulletin bulletinModel = _bulletinRepo.CreateDefault();
+
+            return Ok(bulletinModel);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("GetBulletin")]
         public IActionResult GetModel(int modelID)
         {
             Bulletin bulletinModel = _bulletinRepo.GetModel(modelID);

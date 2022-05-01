@@ -26,7 +26,8 @@ namespace Alliance_Bulletin_USS
         {
 
             var origins = new List<string>();
-            origins.Add("http://localhost:4200");
+            //origins.Add("http://localhost:4200");
+            origins.Add("https://localhost:5000");
 
             if (env.IsDevelopment())
             {

@@ -8,6 +8,21 @@ namespace Alliance_Bulletin_USS.Repositories
 {
     public class BulletinRepository : TechnicalBullitenDBContext
     {
+
+        public Bulletin CreateDefault()
+        {
+            Bulletin model = new Bulletin();
+
+            model.BulletinId = 0;
+            model.Topic = "";
+            model.Software = "";
+            model.Symptom = "";
+            model.Resolution = "";
+            model.Notes = "";
+
+            return model;
+        }
+
         public Bulletin GetModel(int modelID)
         {
             Bulletin model = null;

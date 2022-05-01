@@ -25,7 +25,7 @@ import { ViewBulletinComponent } from './view-bulletin/view-bulletin.component';
 import { WjGridSearchModule } from '@grapecity/wijmo.angular2.grid.search';
 import { WjGridFilterModule } from '@grapecity/wijmo.angular2.grid.filter';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatMenu } from '@angular/material/menu';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +43,6 @@ import { MatMenu } from '@angular/material/menu';
     FormsModule,
     ReactiveFormsModule,
     NgxSummernoteModule,
-    MatMenu,
     HttpClientModule,
     MsalModule.forRoot(new PublicClientApplication({
       auth: {

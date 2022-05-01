@@ -9,18 +9,18 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Alliance_Bulletin_USS
 {
-    public partial class UserAccountDBContext : DbContext
+    public partial class IsAuthorizedDBContext : DbContext
     {
-        public UserAccountDBContext()
+        public IsAuthorizedDBContext()
         {
         }
 
-        public UserAccountDBContext(DbContextOptions<TechnicalBullitenDBContext> options)
+        public IsAuthorizedDBContext(DbContextOptions<TechnicalBullitenDBContext> options)
             : base(options)
         {
         }
 
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<isAuthorized> isAuthorized { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -34,31 +34,11 @@ namespace Alliance_Bulletin_USS
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>(entity =>
+            modelBuilder.Entity<isAuthorized>(entity =>
             {
-                entity.Property(e => e.Username)
-                    .IsRequired()
-                    .HasMaxLength(24);
-
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasMaxLength(24);
-
                 entity.Property(e => e.UserEmail)
                     .IsRequired()
                     .HasMaxLength(200);
-
-                entity.Property(e => e.Subscribed)
-                    .IsRequired()
-                    .HasDefaultValueSql("('FALSE')");
-
-                entity.Property(e => e.IsDev)
-                    .IsRequired()
-                    .HasDefaultValueSql("('FALSE')");
-
-                entity.Property(e => e.IsDeleted)
-                    .IsRequired()
-                    .HasDefaultValueSql("('FALSE')");
             });
 
             OnModelCreatingPartial(modelBuilder);

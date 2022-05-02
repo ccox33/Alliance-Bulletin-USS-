@@ -204,4 +204,3 @@ C:\Users\Arcti\Documents\Classes 2022\CSC 530 (SSP)\GitClone\Alliance-Bulletin-U
 C:\Users\Arcti\Documents\Classes 2022\CSC 530 (SSP)\GitClone\Alliance-Bulletin-USS-\API\Alliance-Bulletin-USS\Alliance-Bulletin-USS\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Arcti\Documents\Classes 2022\CSC 530 (SSP)\GitClone\Alliance-Bulletin-USS-\API\Alliance-Bulletin-USS\Alliance-Bulletin-USS\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Arcti\Documents\Classes 2022\CSC 530 (SSP)\GitClone\Alliance-Bulletin-USS-\API\Alliance-Bulletin-USS\Alliance-Bulletin-USS\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\Arcti\Documents\Classes 2022\CSC 530 (SSP)\GitClone\Alliance-Bulletin-USS-\API\Alliance-Bulletin-USS\Alliance-Bulletin-USS\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

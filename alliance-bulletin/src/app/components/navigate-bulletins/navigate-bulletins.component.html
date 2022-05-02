@@ -1,6 +1,6 @@
 <body class = "hero is-fullheight">
   <h1>Technical Bulletin</h1>
-  <div>  
+  <div class="createOption">  
     <button (click)="goToCreatePage()" class="button" >Create</button>>
   </div>
   <section class = "container">
@@ -33,9 +33,11 @@
       <wj-flex-grid-column
         [header]="'ID'"
         [binding]="'bulletinId'"
-        [width]="'*'"
+        [width]="100"
+        [minWidth]="50"
         align="center"
-        [wordWrap]="true">
+        [wordWrap]="true"
+        [cellTemplate] = "tpViewBulletinLink">
         <!-- [visible]="screenWidth >= 576"> -->
       </wj-flex-grid-column>
 
@@ -45,7 +47,7 @@
         [width]="'*'"
         align="center"
         [wordWrap]="true"
-        cellTemplate="CellMaker.makeLink({text: '${item.topic}', href: '${item.bulletinId}', attributes: {tabindex: 0 }})">
+        cellTemplate="tpViewBulletinLink">
       </wj-flex-grid-column>
 
       <wj-flex-grid-column
@@ -57,15 +59,21 @@
         <!-- [visible]="screenWidth >= 576"> -->
       </wj-flex-grid-column>
 
-      <!--
-      <wj-flex-grid-column [header]="" [width]="75" [binding]="'bulletinId'" align="center">
-        <ng-template wjFlexGridCellTemplate [cellType]="'Cell'" let-cell="cell">
-          <button (click)="goToEditPage(${{item.?bulletinId}})"class="button" >Create</button>>
-        </ng-template>
-      </wj-flex-grid-column>
-      -->
+      <wj-flex-grid-column
+            binding="bulletinId"
+            header=" "
+            [width]="100"
+            [cellTemplate]="tpEditBulletinButton">
+        </wj-flex-grid-column>
        
 
     </wj-flex-grid>
+
+    <wj-collection-view-navigator
+        headerFormat="Page {currentPage:n0} of {pageCount:n0}"
+        [byPage]="true"
+        [cv]="serverView">
+    </wj-collection-view-navigator>
+
   </section>
 </body>

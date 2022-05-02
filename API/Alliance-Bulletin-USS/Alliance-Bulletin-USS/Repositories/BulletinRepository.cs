@@ -11,16 +11,7 @@ namespace Alliance_Bulletin_USS.Repositories
 
         public Bulletin CreateDefault()
         {
-            Bulletin model = new Bulletin();
-
-            model.BulletinId = 0;
-            model.Topic = "";
-            model.Software = "";
-            model.Symptom = "";
-            model.Resolution = "";
-            model.Notes = "";
-
-            return model;
+            return new Bulletin { BulletinId = 0, Topic = "", Software = "", Symptom = "", Resolution = "", Notes = ""};
         }
 
         public Bulletin GetModel(int modelID)

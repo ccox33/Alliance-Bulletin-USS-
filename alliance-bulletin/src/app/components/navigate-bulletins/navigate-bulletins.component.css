@@ -4,6 +4,7 @@
     top:18%;
     left:81%;
     position: absolute;
+    
 }
 
 section{
@@ -19,7 +20,7 @@ h1{
     border-radius: 10px;
     padding: 10px;
     box-shadow: 5px 5px 5px;
-    width: 75%;
+    width: 25%;
 }
 .container{
     background-color: white;

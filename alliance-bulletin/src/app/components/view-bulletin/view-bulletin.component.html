@@ -2,9 +2,10 @@
     <div id="mainBulletin" #mainBulletin>
 
         <!--Bulletin Header-->
-        <p>
-
-        </p>
+        <div id="ImageContain">
+            <img src = "assets/images/UnitedSystems.png">
+        </div>
+        <h1>Technical Bulletin</h1>
 
         <!--Bulletin Info-->
         <table>
@@ -15,8 +16,13 @@
             </tr>
             <!--Date-->
             <tr>
-                <td>Date Created: {{selectedBulletin?.dateCreated}}</td>
-                <td>Date Modified: {{selectedBulletin?.dateModified}}</td>
+                <td>Date Created</td>
+                <td>{{selectedBulletin?.dateCreated}}</td>
+            </tr>
+            <!--Date2-->
+            <tr>
+                <td>Date Modified</td>
+                <td>{{selectedBulletin?.dateModified}}</td>
             </tr>
             <!--Subject-->
             <tr>
@@ -25,36 +31,52 @@
             </tr>
             <!--Software-->
             <tr>
-                <td>Software/Versions Affected: </td>
-                <td>Date Modified: {{selectedBulletin?.dateModified}}</td>
+                <td>Software/Versions Affected</td>
+                <td>{{selectedBulletin?.software}}</td>
             </tr>
         </table>
 
         <!--Main Text-->
-        <h3>Symptom/Bug</h3>
+        <div class="readOut">
+            <h3>Symptom/Bug</h3>
         <p>
             {{selectedBulletin?.symptom}}
         </p>
-        <h3>Solution</h3>
+        </div>
+
+        <div class="readOut">
+            <h3>Symptom/Bug</h3>
+        <p>
+            {{selectedBulletin?.symptom}}
+        </p>
+        </div>
+        
+        <div class="readOut">
+            <h3>Solution</h3>
         <p>
             {{selectedBulletin?.resolution}}
         </p>
-        <h3>Additional Notes</h3>
+        </div>
+        
+        <div class="readOut">
+            <h3>Additional Notes</h3>
         <p>
             {{selectedBulletin?.notes}}
         </p>
-
+        </div>
+        
         <!--Bulletin Footer-->
-        <p>
-
-        </p>
+        
 
     </div>
 
     <div class="options">
         
-        <button class="pdf-button" (click)="downloadAsPDF()">Export to PDF</button>
+        <button class="button" (click)="downloadAsPDF()">Export to PDF</button>
         
         <button class="button" ngxClipboard [cbContent]="'bulletins.united-systems.com/{{testBulletin?.bulletinId}}'" (click)="copied()">Copy Link to Share</button>
+
+        <button type="submit" class="button" routerLink="/navigate-bulletins">Back</button>
+
     </div>
 </body>

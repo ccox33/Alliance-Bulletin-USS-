@@ -4,6 +4,7 @@ import { Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Bulletin } from 'src/app/bulletin.interface';
 import { DataService } from 'src/app/services/data.service';
+import { AppModule } from '../app.module';
 
 @Component({
   selector: 'app-create-bulletin',
@@ -59,15 +60,27 @@ export class CreateBulletinComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    //Get is authorized!
+    // We have a data service function that accepts an email string as a parameter and
+    // returns true if the email is contained in the authorized database.
+    // The app component keeps an isAuthorized variable that we want to reference in this
+    // component to verify certain actions.
+
     let id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.selectedID = id;
     if (this.selectedID > 0)
     {
-      // The Title of the Page Label needs to be changed here
+      
       let pageLabel = document.getElementById("pageLabel")
       pageLabel.innerText = "Edit Bulletin"
       this.getBulletin(this.selectedID);
       
+      this.bulletinForm.patchValue({subject: this.selectedBulletin.topic});
+      this.bulletinForm.patchValue({software: this.selectedBulletin.software});
+      this.bulletinForm.patchValue({symptom: this.selectedBulletin.symptom});
+      this.bulletinForm.patchValue({solution: this.selectedBulletin.resolution});
+      this.bulletinForm.patchValue({notes: this.selectedBulletin.notes});
     }
     else
     {
@@ -104,8 +117,8 @@ export class CreateBulletinComponent implements OnInit {
     if (this.selectedID != 0)
     {
       alert("Are you sure you want to delete this form?\nYou will be routed back to the navigation page.");
-      this.dataService.updateBulletin(this.selectedID);
+      this.dataService.deleteBulletin(this.selectedID);
     }
+    this.router.navigate(['navigate-bulletins']);
   }
-
 }

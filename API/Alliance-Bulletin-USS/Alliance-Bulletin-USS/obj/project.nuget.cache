@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "RXInhUutN10rgDMxzzlKvnRCs3BCopkCZbvIeGMuTjn+j+nAomgL2YGyzYJCdlBM4wXqbJCvf8tV7jnevKbM9w==",
+  "dgSpecHash": "zZJTXGObsSHhd/xJCv8H5yCjkQ1ALbPA3D0SZL0Wc4PBL+14f15EIjH4pPp7RFM6Ubuzz4R6pp5UFyWSVwsz+A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Arcti\\Documents\\Classes 2022\\CSC 530 (SSP)\\GitClone\\Alliance-Bulletin-USS-\\API\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS\\Alliance-Bulletin-USS.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Arcti\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.24\\microsoft.aspnetcore.authentication.jwtbearer.3.1.24.nupkg.sha512",
     "C:\\Users\\Arcti\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Arcti\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.9\\microsoft.aspnetcore.jsonpatch.3.1.9.nupkg.sha512",
     "C:\\Users\\Arcti\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.9\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.9.nupkg.sha512",

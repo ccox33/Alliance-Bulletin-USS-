@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+
 import { jsPDF } from 'jspdf';
-import { pdfMake } from 'pdfmake/build/pdfmake';
-import { pdfFonts } from 'pdfmake/build/vfs_fonts';
-//pdfMake.vfs = pdfFonts.pdfMake.vfs;
-import { htmlToPdfmake } from 'html-to-pdfmake';
+import html2canvas from "html2canvas";
+
+
 import { Bulletin } from 'src/app/bulletin.interface';
 import { DataService } from 'src/app/services/data.service';
 
@@ -54,13 +54,16 @@ export class ViewBulletinComponent implements OnInit {
   downloadAsPDF(){
     console.log('downloading pdf ...');
 
-    const doc = new jsPDF();
-    const pdfElement = this.pdfBulletin.nativeElement;
-    let html = htmlToPdfmake(pdfElement.innerHTML);
-    const documentDefinition = {content: html};
-    
-    pdfMake.createPdf(documentDefinition).open();
-    //doc.save('first.pdf');
+    let DATA: any = document.getElementById('mainBulletin');
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.save('angular-demo.pdf');
+    });
   }
 
   copied() {

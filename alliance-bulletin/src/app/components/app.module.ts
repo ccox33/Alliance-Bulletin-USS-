@@ -24,6 +24,7 @@ import { ViewBulletinComponent } from './view-bulletin/view-bulletin.component';
 
 import { WjGridSearchModule } from '@grapecity/wijmo.angular2.grid.search';
 import { WjGridFilterModule } from '@grapecity/wijmo.angular2.grid.filter';
+import { WjInputModule } from '@grapecity/wijmo.angular2.input';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -69,6 +70,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     ClipboardModule,
     WjGridSearchModule,
     WjGridFilterModule,
+    WjInputModule,
     NoopAnimationsModule
   ],
   providers: [

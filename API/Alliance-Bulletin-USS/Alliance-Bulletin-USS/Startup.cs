@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Serialization;
 using Microsoft.Net.Http.Headers;
 using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Alliance_Bulletin_USS
@@ -26,8 +25,8 @@ namespace Alliance_Bulletin_USS
         {
 
             var origins = new List<string>();
-            //origins.Add("http://localhost:4200");
-            origins.Add("https://localhost:5000");
+            origins.Add("https://localhost:4200");
+            //origins.Add("https://localhost:5000");
 
             if (env.IsDevelopment())
             {
@@ -36,8 +35,6 @@ namespace Alliance_Bulletin_USS
 
             app.UseHttpsRedirection();
             app.UseRouting();
-
-            app.UseAuthentication();
 
             app.UseAuthorization();
             app.UseCors(config =>
@@ -64,11 +61,6 @@ namespace Alliance_Bulletin_USS
         }
 
 
-
-
-
-
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -85,7 +77,7 @@ namespace Alliance_Bulletin_USS
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
 
-            // Authentication
+            /*Authentication
             var key = Encoding.ASCII.GetBytes("TELL_NO_ONE_7890355789342675");
 
             services.AddAuthentication(x =>
@@ -113,7 +105,7 @@ namespace Alliance_Bulletin_USS
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
-            });
+            }); */
 
             // JSON Serializer
             services.AddControllersWithViews()

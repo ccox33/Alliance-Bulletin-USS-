@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 //import * as internal from 'stream';
 import * as wjCore from '@grapecity/wijmo';
@@ -11,6 +11,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import * as wjGridFilter from '@grapecity/wijmo.grid.filter';
 import { WjGridSearchModule } from '@grapecity/wijmo.angular2.grid.search';
+import { CellMaker } from '@grapecity/wijmo.grid.cellmaker';
+import * as wjcGrid from '@grapecity/wijmo.grid';
 
 @Component({
   selector: 'app-navigate-bulletins',
@@ -26,30 +28,39 @@ export class NavigateBulletinsComponent {
 
   @ViewChild('flex') flex: WjFlexGrid;
 
-  //this.ds.getAllSoftware().subscribe((res) => console.log(res))
+  @ViewChild('test') pdfBulletin: ElementRef;
 
   constructor(public router: Router, public dataServiceInput : DataService) {
     this.dataService = dataServiceInput;
-    this.dataService.getBulletins().subscribe((res) => console.log(res))
+    //this.dataService.getBulletins().subscribe((res) => console.log(res))
   }
  
   public ngOnInit(): void {
+
+    this.dataService.getAllSoftware().subscribe((res) => console.log(res))
+
     this.fillGrid();
   }
 
   public fillGrid() : void {
     this.dataService.getBulletins().subscribe((res) => 
-    this.serverView = new CollectionView(res, {}));
+      this.serverView = new CollectionView(res, {pageSize: 25}));
+    
+    this.flex.beginningEdit.addHandler((s: wjcGrid.FlexGrid, e: wjcGrid.CellRangeEventArgs) => {
+      e.cancel = true;
+    });
   }
-
-  // Example data of bulletin Row.
-  rowData = [
-      { date: '11/20/2019', id: '01', subject: 'Problem with main software, bug in code.', software: "D0152 v3.4, D88521 v1.2, D52365 v2.0" },
-      { date: '11/25/2021', id: '02', subject: 'A problem with main software, bug in code.', software: "D0052 v3.4, D88521 v1.2, D52365 v2.0" },
-      { date: '11/25/2020', id: '25', subject: 'Another problem with main software, bug in code.', software: "D6652 v3.4, D88521 v1.2, D52365 v2.0" },
-      { date: '11/23/2021', id: '03', subject: 'Big problem with main software, bug in code.', software: "D0752 v3.4, D88521 v1.2, D52365 v2.0" }
-  ];
  
+  // Button Templates
+  tpViewBulletinLink = CellMaker.makeLink({
+    click: (e, ctx) => this.goToViewPage(ctx.item.bulletinId)
+  });
+  tpEditBulletinButton = CellMaker.makeButton({
+    text: 'Edit',
+    click: (e, ctx) => this.goToEditPage(ctx.item.bulletinId)
+  });
+
+
   public goToViewPage(selectedBulletinID: number): void {
     let selectedID = selectedBulletinID? selectedBulletinID : null;
     this.router.navigate(['view-bulletin', selectedID]);

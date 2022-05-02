@@ -35,10 +35,10 @@ namespace Alliance_Bulletin_USS.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("GetBulletin")]
-        public IActionResult GetModel(int modelID)
+        [HttpGet("GetBulletinByID")]
+        public IActionResult GetModel(string modelID)
         {
-            Bulletin bulletinModel = _bulletinRepo.GetModel(modelID);
+            Bulletin bulletinModel = _bulletinRepo.GetModel(Int32.Parse(modelID));
 
             return Ok(bulletinModel);
         }

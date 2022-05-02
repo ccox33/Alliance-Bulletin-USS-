@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Bulletin } from '../bulletin.interface';
 
 @Injectable({
@@ -8,10 +8,20 @@ import { Bulletin } from '../bulletin.interface';
 })
 export class DataService {
   //public url : string = "https://bulletinsapi.united-systems.com/api/"
-  public url : string = "https://localhost:5000/api/"
+  public url : string = "https://localhost:5001/api/";
+
+  public selectedBulletinDataSource = new BehaviorSubject<any>(null);
+  public selectedBulletin = this.selectedBulletinDataSource.asObservable();
+
+
+
   constructor(public http: HttpClient) 
   { 
 
+  }
+
+  public updateSelectedBulletin(bulletin: Bulletin){
+    this.selectedBulletinDataSource.next(bulletin);
   }
 
   public getAllSoftware() : Observable<any>
@@ -57,12 +67,7 @@ public createDefault() : Observable<Bulletin>
 // Legacy Get method in case things go worng in the universal get method.
 public getBulletin(modelID: number) : Observable<Bulletin>
 {
-
-  const params = new HttpParams()
-  .set('modelID', modelID.toString());;
-
-  // can be changed to
-  return this.http.get<Bulletin>(`${this.url}TechnicalBulletin/GetBulletin/`, { params: params })
+  return this.http.get<Bulletin>(`${this.url}TechnicalBulletin/GetBulletinByID?modelID=${modelID.toString()}`)
       .pipe(
         map((res: Bulletin) => {
           return res;

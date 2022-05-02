@@ -23,7 +23,7 @@
 
       <wj-flex-grid-column
         [header]="'Date'"
-        [binding]="'dateModified'"
+        [binding]="'DateModified'"
         [width]="'*'"
         [minWidth]="100"
         align="center"
@@ -32,18 +32,17 @@
 
       <wj-flex-grid-column
         [header]="'ID'"
-        [binding]="'bulletinId'"
+        [binding]="'BulletinId'"
         [width]="100"
         [minWidth]="50"
         align="center"
-        [wordWrap]="true"
-        [cellTemplate] = "tpViewBulletinLink">
+        [wordWrap]="true">
         <!-- [visible]="screenWidth >= 576"> -->
       </wj-flex-grid-column>
 
       <wj-flex-grid-column
         [header]="'Subject'"
-        [binding]="'topic'"
+        [binding]="'Topic'"
         [width]="'*'"
         align="center"
         [wordWrap]="true"
@@ -52,7 +51,7 @@
 
       <wj-flex-grid-column
         [header]="'Software'"
-        [binding]="'software'"
+        [binding]="'Software'"
         [width]="'*'"
         align="center"
         [wordWrap]="true">
@@ -60,7 +59,14 @@
       </wj-flex-grid-column>
 
       <wj-flex-grid-column
-            binding="bulletinId"
+            [binding]="'BulletinId'"
+            header=" "
+            [width]="100"
+            [cellTemplate]="tpViewBulletinButton">
+        </wj-flex-grid-column>
+
+        <wj-flex-grid-column
+            [binding]="'BulletinId'"
             header=" "
             [width]="100"
             [cellTemplate]="tpEditBulletinButton">

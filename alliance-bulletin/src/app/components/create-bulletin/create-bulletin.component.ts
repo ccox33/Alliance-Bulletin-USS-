@@ -76,11 +76,11 @@ export class CreateBulletinComponent implements OnInit {
       pageLabel.innerText = "Edit Bulletin"
       this.getBulletin(this.selectedID);
       
-      this.bulletinForm.patchValue({subject: this.selectedBulletin.topic});
-      this.bulletinForm.patchValue({software: this.selectedBulletin.software});
-      this.bulletinForm.patchValue({symptom: this.selectedBulletin.symptom});
-      this.bulletinForm.patchValue({solution: this.selectedBulletin.resolution});
-      this.bulletinForm.patchValue({notes: this.selectedBulletin.notes});
+      this.bulletinForm.patchValue({subject: this.selectedBulletin.Topic});
+      this.bulletinForm.patchValue({software: this.selectedBulletin.Software});
+      this.bulletinForm.patchValue({symptom: this.selectedBulletin.Symptom});
+      this.bulletinForm.patchValue({solution: this.selectedBulletin.Resolution});
+      this.bulletinForm.patchValue({notes: this.selectedBulletin.Notes});
     }
     else
     {
@@ -100,15 +100,15 @@ export class CreateBulletinComponent implements OnInit {
   }
 
   postBulletin() {
-    this.selectedBulletin.bulletinId = this.selectedID;
+    this.selectedBulletin.BulletinId = this.selectedID;
     
-    console.warn(this.selectedBulletin.bulletinId);
+    console.warn(this.selectedBulletin.BulletinId);
 
-    this.selectedBulletin.topic = this.bulletinForm.get('subject').value;
-    this.selectedBulletin.software = this.bulletinForm.get('software').value;
-    this.selectedBulletin.symptom = this.bulletinForm.get('symptom').value;
-    this.selectedBulletin.resolution = this.bulletinForm.get('solution').value;
-    this.selectedBulletin.notes = this.bulletinForm.get('notes').value;
+    this.selectedBulletin.Topic = this.bulletinForm.get('subject').value;
+    this.selectedBulletin.Software = this.bulletinForm.get('software').value;
+    this.selectedBulletin.Symptom = this.bulletinForm.get('symptom').value;
+    this.selectedBulletin.Resolution = this.bulletinForm.get('solution').value;
+    this.selectedBulletin.Notes = this.bulletinForm.get('notes').value;
 
     this.dataService.updateBulletin(this.selectedBulletin);
   }

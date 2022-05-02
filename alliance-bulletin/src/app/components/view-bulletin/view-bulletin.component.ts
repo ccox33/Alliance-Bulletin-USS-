@@ -15,7 +15,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ViewBulletinComponent implements OnInit {
 
-  public selectedID;
+ 
   public dataService : DataService;
   public selectedBulletin : Bulletin;
 
@@ -24,32 +24,25 @@ export class ViewBulletinComponent implements OnInit {
   constructor(private route: ActivatedRoute, public dataServiceInput : DataService) 
   {
     this.dataService = dataServiceInput;
+    this.dataService.selectedBulletin.subscribe((bulletin) => this.selectedBulletin = bulletin);
+    console.log(this.selectedBulletin);
     //this.ds.getAllSoftware().subscribe((res) => console.log(res))
   }
 
   ngOnInit(): void {
-    let id = parseInt(this.route.snapshot.paramMap.get('id'));
-    this.selectedID = id;
-    if (this.selectedID > 0)
-    {
-      this.getBulletin(this.selectedID);
-    }
+    
   }
 
   getBulletin(modelID: number){
 
     this.dataService.getBulletin(modelID).subscribe((res) => {
       this.selectedBulletin = res;
+      console.log(this.selectedBulletin)
     })
 
   }
 
-  deleteBulletin(){
-    if (this.selectedID > 0)
-    {
-      this.dataService.deleteBulletin(this.selectedID);
-    }
-  }
+  
 
   downloadAsPDF(){
     console.log('downloading pdf ...');

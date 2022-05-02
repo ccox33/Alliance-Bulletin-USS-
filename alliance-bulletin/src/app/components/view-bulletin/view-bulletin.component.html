@@ -8,31 +8,31 @@
         <h1>Technical Bulletin</h1>
 
         <!--Bulletin Info-->
-        <table>
+        <table *ngIf="">
             <!--ID-->
             <tr>
                 <td>BulletinId</td>
-                <td>{{selectedBulletin?.bulletinId}}</td>
+                <td>{{this.selectedBulletin?.BulletinId}}</td>
             </tr>
             <!--Date-->
             <tr>
                 <td>Date Created</td>
-                <td>{{selectedBulletin?.dateCreated}}</td>
+                <td>{{selectedBulletin?.DateCreated}}</td>
             </tr>
             <!--Date2-->
             <tr>
                 <td>Date Modified</td>
-                <td>{{selectedBulletin?.dateModified}}</td>
+                <td>{{selectedBulletin?.DateModified}}</td>
             </tr>
             <!--Subject-->
             <tr>
                 <td>Subject</td>
-                <td>{{selectedBulletin?.topic}}</td>
+                <td>{{selectedBulletin?.Topic}}</td>
             </tr>
             <!--Software-->
             <tr>
                 <td>Software/Versions Affected</td>
-                <td>{{selectedBulletin?.software}}</td>
+                <td>{{selectedBulletin?.Software}}</td>
             </tr>
         </table>
 
@@ -40,28 +40,28 @@
         <div class="readOut">
             <h3>Symptom/Bug</h3>
         <p>
-            {{selectedBulletin?.symptom}}
+            {{selectedBulletin?.Symptom}}
         </p>
         </div>
 
         <div class="readOut">
             <h3>Symptom/Bug</h3>
         <p>
-            {{selectedBulletin?.symptom}}
+            {{selectedBulletin?.Symptom}}
         </p>
         </div>
         
         <div class="readOut">
             <h3>Solution</h3>
         <p>
-            {{selectedBulletin?.resolution}}
+            {{selectedBulletin?.Resolution}}
         </p>
         </div>
         
         <div class="readOut">
             <h3>Additional Notes</h3>
         <p>
-            {{selectedBulletin?.notes}}
+            {{selectedBulletin?.Notes}}
         </p>
         </div>
         

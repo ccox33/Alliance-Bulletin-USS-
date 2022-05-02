@@ -46,33 +46,31 @@ export class NavigateBulletinsComponent {
     this.dataService.getBulletins().subscribe((res) => 
       this.serverView = new CollectionView(res, {pageSize: 25}));
     
-    this.flex.beginningEdit.addHandler((s: wjcGrid.FlexGrid, e: wjcGrid.CellRangeEventArgs) => {
-      e.cancel = true;
-    });
   }
  
   // Button Templates
-  tpViewBulletinLink = CellMaker.makeLink({
-    click: (e, ctx) => this.goToViewPage(ctx.item.bulletinId)
-  });
   tpEditBulletinButton = CellMaker.makeButton({
     text: 'Edit',
-    click: (e, ctx) => this.goToEditPage(ctx.item.bulletinId)
+    click: (e, ctx) => this.goToEditPage(ctx.item)
+  });
+  tpViewBulletinButton = CellMaker.makeButton({
+    text: 'View',
+    click: (e, ctx) => this.goToViewPage(ctx.item)
   });
 
 
-  public goToViewPage(selectedBulletinID: number): void {
-    let selectedID = selectedBulletinID? selectedBulletinID : null;
-    this.router.navigate(['view-bulletin', selectedID]);
+  public goToViewPage(selectedBulletin: Bulletin): void {
+    this.dataService.updateSelectedBulletin(selectedBulletin);
+    this.router.navigate(['view-bulletin']);
   }
 
   public goToCreatePage() : void {
     this.router.navigate(['create-bulletin', 0]);
   }
   
-  public goToEditPage(selectedBulletinID: number) : void {
-    let selectedID = selectedBulletinID ? selectedBulletinID : null;
-    this.router.navigate(['create-bulletin', selectedID]);
+  public goToEditPage(selectedBulletin: Bulletin) : void {
+    this.dataService.updateSelectedBulletin(selectedBulletin);
+    this.router.navigate(['create-bulletin']);
   }
 
 }

@@ -13,46 +13,25 @@ export class DataService {
   public selectedBulletinDataSource = new BehaviorSubject<any>(null);
   public selectedBulletin = this.selectedBulletinDataSource.asObservable();
 
-
-
   constructor(public http: HttpClient) 
   { 
 
   }
 
   public updateSelectedBulletin(bulletin: Bulletin){
+    console.log("A Page has updated the bulletin source to:" + bulletin);
     this.selectedBulletinDataSource.next(bulletin);
   }
 
-  public getAllSoftware() : Observable<any>
-  {
-    return this.http.get<string>(`${this.url}TechnicalBulletin/GetAllSoftwareTypes`)
-      .pipe(
-        map((res: string) => {
-          return res;
-        })
-      );
-  }
-
   public GetAuthorized(email: String) : Observable<boolean>
-{
+  {
   return this.http.get<boolean>(`${this.url}TechnicalBulletin/GetAuthorized`)
       .pipe(
         map((res: boolean) => {
           return res;
         })
       );
-}
-
-public createDefault() : Observable<Bulletin>
-{
-  return this.http.get<Bulletin>(`${this.url}TechnicalBulletin/CreateDefault`)
-      .pipe(
-        map((res: Bulletin) => {
-          return res;
-        })
-      );
-}
+  }
 
   public getBulletins() : Observable<any>
   {
@@ -64,31 +43,15 @@ public createDefault() : Observable<Bulletin>
       );
   }
 
-// Legacy Get method in case things go worng in the universal get method.
-public getBulletin(modelID: number) : Observable<Bulletin>
-{
-  return this.http.get<Bulletin>(`${this.url}TechnicalBulletin/GetBulletinByID?modelID=${modelID.toString()}`)
-      .pipe(
-        map((res: Bulletin) => {
-          return res;
-        })
-      );
-}
-
-/**
-   * @param {number} id
-   * @param {string} modelName
-   * @returns {Observable<any>}
-   */
- public getByID(id: number, modelName: string): Observable<any> {
-  const params = new HttpParams()
-  .set('modelID', id.toString());
-  return this.http.get<any>(`${this.url}TechnicalBulletin/Get${modelName}?token=${localStorage.getItem('AllianceServiceToken')}`, { params: params })
-    .pipe(
-      map((res: any) => {
-        return res;
-      }),
-    );
+  
+  public getBulletin(modelID: number) : Observable<Bulletin>
+  {
+    return this.http.get<Bulletin>(`${this.url}TechnicalBulletin/GetBulletinByID?modelID=${modelID.toString()}`)
+        .pipe(
+          map((res: Bulletin) => {
+            return res;
+          })
+        );
   }
 
   // This method can be used for both updating and Creating new Bulletins
@@ -111,9 +74,6 @@ public getBulletin(modelID: number) : Observable<Bulletin>
   // Takes an ID and deletes a bulletin
   public deleteBulletin(modelID: number) : Observable<any>
   {
-    const params = new HttpParams()
-    .set('modelID', modelID.toString());;
-
-    return this.http.delete<string>(`${this.url}TechnicalBulletin/Delete/`, { params: params });
+    return this.http.delete<string>(`${this.url}TechnicalBulletin/DeleteBulletin?modelID=${modelID.toString()}`);
   }
 }

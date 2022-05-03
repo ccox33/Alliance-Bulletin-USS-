@@ -15,7 +15,6 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ViewBulletinComponent implements OnInit {
 
- 
   public dataService : DataService;
   public selectedBulletin : Bulletin;
 
@@ -26,16 +25,11 @@ export class ViewBulletinComponent implements OnInit {
     this.dataService = dataServiceInput;
     this.dataService.selectedBulletin.subscribe((bulletin) => this.selectedBulletin = bulletin);
     console.log(this.selectedBulletin);
-    //this.ds.getAllSoftware().subscribe((res) => console.log(res))
   }
 
   ngOnInit(): void {
-    //this.dataService.selectedBulletin.subscribe((bulletin) => this.selectedBulletin = bulletin);
-    //console.log(this.selectedBulletin);
+
   }
-
-
-  
 
   downloadAsPDF(){
     console.log('downloading pdf ...');

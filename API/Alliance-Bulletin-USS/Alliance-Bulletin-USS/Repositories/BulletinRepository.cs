@@ -8,12 +8,6 @@ namespace Alliance_Bulletin_USS.Repositories
 {
     public class BulletinRepository : TechnicalBullitenDBContext
     {
-
-        public Bulletin CreateDefault()
-        {
-            return new Bulletin { BulletinId = 0, Topic = "", Software = "", Symptom = "", Resolution = "", Notes = ""};
-        }
-
         public Bulletin GetModel(int modelID)
         {
             Bulletin model = null;
@@ -71,22 +65,6 @@ namespace Alliance_Bulletin_USS.Repositories
             }
 
             return false;
-        }
-
-        public List<String> GetAllSoftwareTypes()
-        {
-            List<String> softwareTypes = null;
-
-            try
-            {
-                softwareTypes = Bulletins.Where(x => !x.IsDeleted).Select(x => x.Software).ToList();
-            }
-            catch (Exception ex)
-            {
-                //TODO:Log Exception
-            }
-
-            return softwareTypes;
         }
 
         public Boolean DeleteModel(Int32 modelID)

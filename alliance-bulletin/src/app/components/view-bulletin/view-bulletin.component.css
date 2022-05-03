@@ -1,6 +1,6 @@
 #mainBulletin {
-    max-width: 600px;
-
+    min-width: 800px;
+    align-self: center;
     background-color: white;
     padding: 10px;
     margin-top: 20px;
@@ -9,7 +9,7 @@
 }
 
 #ImageContain {
-    max-width: 200px;
+    max-width: 300px;
     display: inline-block;
     margin-bottom: 20px;
 }
@@ -18,6 +18,7 @@ h1 {
     float: right;
     width: 200px;
     margin-bottom: 20px;
+    text-decoration: underline;
 }
 
 image {
@@ -35,7 +36,7 @@ td {
     border: 1px solid #ddd;
     padding: 8px;
     width: 100px;
-    max-width: 500px;
+    min-width: 100px;
 }
 
 tr:nth-child(even){
@@ -67,7 +68,9 @@ h3 {
     width: 45%;
 }
 
-footer{
+#footer{
+    padding-top: 5px;
+    border-top: 2px solid black;
     text-align: center;
 }
 

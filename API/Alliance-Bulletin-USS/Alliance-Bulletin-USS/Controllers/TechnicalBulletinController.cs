@@ -26,15 +26,6 @@ namespace Alliance_Bulletin_USS.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("CreateDefault")]
-        public IActionResult CreateDefault()
-        {
-            Bulletin bulletinModel = _bulletinRepo.CreateDefault();
-
-            return Ok(bulletinModel);
-        }
-
-        [AllowAnonymous]
         [HttpGet("GetBulletinByID")]
         public IActionResult GetModel(string modelID)
         {
@@ -50,15 +41,6 @@ namespace Alliance_Bulletin_USS.Controllers
             List<Bulletin> bulletinModels = _bulletinRepo.GetBulletins();
 
             return Ok(bulletinModels);
-        }
-
-        [AllowAnonymous]
-        [HttpGet("GetAllSoftwareTypes")]
-        public IActionResult GetAllSoftwareTypes()
-        {
-            List<String> softwareTypes = _bulletinRepo.GetAllSoftwareTypes();
-
-            return Ok(softwareTypes);
         }
 
         [AllowAnonymous]
@@ -81,12 +63,12 @@ namespace Alliance_Bulletin_USS.Controllers
         }
 
         [AllowAnonymous]
-        [HttpDelete("{id}")]
-        public JsonResult Delete(int bulletinID)
+        [HttpDelete("DeleteBulletin")]
+        public JsonResult Delete(string bulletinID)
         {
             try
             {
-                if (_bulletinRepo.DeleteModel(bulletinID))
+                if (_bulletinRepo.DeleteModel(Int32.Parse(bulletinID)))
                 {
                     return new JsonResult("Deleted Successfully");
                 }

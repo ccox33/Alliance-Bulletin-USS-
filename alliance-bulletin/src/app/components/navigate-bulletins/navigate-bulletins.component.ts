@@ -22,30 +22,10 @@ import * as wjcGrid from '@grapecity/wijmo.grid';
 export class NavigateBulletinsComponent {
 
   public dataService : DataService;
-  public bulletinRes : Observable<any>;
-
   public serverView = new wjCore.CollectionView();
 
+  //Grid Construct
   @ViewChild('flex') flex: WjFlexGrid;
-
-  constructor(public router: Router, public dataServiceInput : DataService) {
-    this.dataService = dataServiceInput;
-    //this.dataService.getBulletins().subscribe((res) => console.log(res))
-  }
- 
-  public ngOnInit(): void {
-
-    this.dataService.getAllSoftware().subscribe((res) => console.log(res))
-
-    this.fillGrid();
-  }
-
-  public fillGrid() : void {
-    this.dataService.getBulletins().subscribe((res) => 
-      this.serverView = new CollectionView(res, {pageSize: 25}));
-    
-  }
- 
   // Button Templates
   tpEditBulletinButton = CellMaker.makeButton({
     text: 'Edit',
@@ -57,6 +37,17 @@ export class NavigateBulletinsComponent {
   });
 
 
+  constructor(public router: Router, public dataServiceInput : DataService) {
+    this.dataService = dataServiceInput;
+  }
+ 
+  public ngOnInit(): void {
+    this.dataService.getBulletins().subscribe((res) => 
+      this.serverView = new CollectionView(res, {pageSize: 25}));
+  }
+
+
+  //Button Functions to Link
   public goToViewPage(selectedBulletin: Bulletin): void {
     this.dataService.updateSelectedBulletin(selectedBulletin);
     this.router.navigate(['view-bulletin']);
@@ -85,7 +76,3 @@ export class NavigateBulletinsComponent {
   }
 
 }
-
-
-
-

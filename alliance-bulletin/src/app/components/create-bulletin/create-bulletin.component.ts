@@ -27,6 +27,10 @@ export class CreateBulletinComponent implements OnInit {
     console.log(this.selectedBulletin);
 
     this.bulletinForm.patchValue({subject: this.selectedBulletin.Topic});
+    this.bulletinForm.patchValue({software: this.selectedBulletin.Software});
+    this.bulletinForm.patchValue({symptom: this.selectedBulletin.Symptom});
+    this.bulletinForm.patchValue({solution: this.selectedBulletin.Resolution});
+    this.bulletinForm.patchValue({notes: this.selectedBulletin.Notes});
   }
 
 
@@ -40,9 +44,6 @@ export class CreateBulletinComponent implements OnInit {
   });
 
   
-  //subject.summernote('insertText', this.selectedBulletin.subject);
-  //ngxSummernote.insertText(this.selectedBulletin.subject);
-
   config = {
     placeholder: '',
     tabsize: 2,
@@ -73,19 +74,6 @@ export class CreateBulletinComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //Get is authorized!
-    // We have a data service function that accepts an email string as a parameter and
-    // returns true if the email is contained in the authorized database.
-    // The app component keeps an isAuthorized variable that we want to reference in this
-    // component to verify certain actions.
-  }
-
-  getBulletin(modelID: number){
-
-    this.dataService.getBulletin(modelID).subscribe((res) => {
-      this.selectedBulletin = res;
-    })
-
   }
 
   postBulletin() {
@@ -114,9 +102,7 @@ export class CreateBulletinComponent implements OnInit {
     {
       alert("Are you sure you want to delete this form?\nYou will be routed back to the navigation page.");
 
-      this.selectedBulletin.IsDeleted = true;
-
-      this.dataService.updateBulletin(this.selectedBulletin);
+      this.dataService.deleteBulletin(this.selectedBulletin.BulletinId);
     }
     this.router.navigate(['navigate-bulletins']);
   }

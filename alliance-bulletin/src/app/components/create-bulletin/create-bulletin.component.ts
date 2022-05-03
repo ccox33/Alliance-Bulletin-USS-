@@ -26,6 +26,8 @@ export class CreateBulletinComponent implements OnInit {
     this.dataService.selectedBulletin.subscribe((bulletin) => this.selectedBulletin = bulletin);
     console.log(this.selectedBulletin);
 
+    
+
     this.bulletinForm.patchValue({subject: this.selectedBulletin.Topic});
     this.bulletinForm.patchValue({software: this.selectedBulletin.Software});
     this.bulletinForm.patchValue({symptom: this.selectedBulletin.Symptom});
@@ -43,6 +45,13 @@ export class CreateBulletinComponent implements OnInit {
     notes: new FormControl('')
   });
 
+  ngOnInit(): void {
+    if (this.selectedBulletin.BulletinId > 0)
+    {
+      let pageLabel = document.getElementById("pageLabel")
+      pageLabel.innerText = "Edit Bulletin"
+    }
+  }
   
   config = {
     placeholder: '',
@@ -72,17 +81,13 @@ export class CreateBulletinComponent implements OnInit {
     this.bulletinForm.reset;
   }
 
-  ngOnInit(): void {
-
-  }
-
   postBulletin() {
     
     console.warn(this.selectedBulletin.BulletinId);
 
     const newBulletin: Bulletin = {
       BulletinId:this.selectedBulletin.BulletinId, 
-      DateCreated: this.selectedBulletin.DateCreated, 
+      DateCreated: new Date(), 
       Topic: this.bulletinForm.value.subject, 
       Software: this.bulletinForm.value.software, 
       Symptom: this.bulletinForm.value.symptom, 
@@ -90,11 +95,11 @@ export class CreateBulletinComponent implements OnInit {
       Notes: this.bulletinForm.value.notes,
       Noteimage: this.selectedBulletin.Noteimage,
       IsDeleted:false,
-      DateModified: this.selectedBulletin.DateModified
+      DateModified: new Date()
     }
 
     console.warn(newBulletin);
-    this.dataService.updateBulletin(newBulletin);
+    this.dataService.updateBulletin(newBulletin).subscribe((res) => console.log(res));
   }
 
   deleteBulletin() {

@@ -24,6 +24,8 @@ export class NavigateBulletinsComponent {
   public dataService : DataService;
   public serverView = new wjCore.CollectionView();
 
+  public bulletins : Bulletin[];
+
   //Grid Construct
   @ViewChild('flex') flex: WjFlexGrid;
   // Button Templates
@@ -42,8 +44,12 @@ export class NavigateBulletinsComponent {
   }
  
   public ngOnInit(): void {
-    this.dataService.getBulletins().subscribe((res) => 
-      this.serverView = new CollectionView(res, {pageSize: 25}));
+    this.dataService.getBulletins().subscribe((res) => {
+      this.bulletins = res;
+      console.log(this.bulletins);
+      this.serverView = new CollectionView(this.bulletins, {pageSize: 25})
+    });
+    
   }
 
 
@@ -56,7 +62,7 @@ export class NavigateBulletinsComponent {
   public goToCreatePage() : void {
     const emptyBulletin: Bulletin = {
       BulletinId:0, 
-      DateCreated: null, 
+      DateCreated: new Date(), 
       Topic: "", 
       Software:"", 
       Symptom:"", 
@@ -64,7 +70,7 @@ export class NavigateBulletinsComponent {
       Notes:"",
       Noteimage:"",
       IsDeleted:false,
-      DateModified: null
+      DateModified: new Date()
     }
     this.dataService.updateSelectedBulletin(emptyBulletin);
     this.router.navigate(['create-bulletin']);

@@ -45,7 +45,7 @@ namespace Alliance_Bulletin_USS.Controllers
 
         [AllowAnonymous]
         [HttpPost("SaveModel")]
-        public JsonResult SaveModel(Bulletin bulletin)
+        public JsonResult SaveModel([FromBody]Bulletin bulletin)
         {
             if(bulletin.BulletinId == 0)
             {

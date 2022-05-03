@@ -35,9 +35,9 @@ export class DataService {
 
   public getBulletins() : Observable<any>
   {
-    return this.http.get<Array<Bulletin>>(`${this.url}TechnicalBulletin/GetBulletins`)
+    return this.http.get<Array<any>>(`${this.url}TechnicalBulletin/GetBulletins`)
       .pipe(
-        map((res: Array<Bulletin>) => {
+        map((res: Array<any>) => {
           return res;
         })
       );
@@ -68,7 +68,6 @@ export class DataService {
           return res;
         })
       );
-    console.log("got to end")
   }
 
   // Takes an ID and deletes a bulletin

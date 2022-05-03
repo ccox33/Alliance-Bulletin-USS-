@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSummernoteDirective, NgxSummernoteModule } from 'ngx-summernote';
+import { Subject } from 'rxjs';
+import { JQueryStyleEventEmitter } from 'rxjs/internal/observable/fromEvent';
 import { Bulletin } from 'src/app/bulletin.interface';
 import { DataService } from 'src/app/services/data.service';
 import { AppModule } from '../app.module';
@@ -13,10 +16,20 @@ import { AppModule } from '../app.module';
 })
 export class CreateBulletinComponent implements OnInit {
 
-  public selectedID = 0;
   public dataService : DataService;
   public selectedBulletin : Bulletin;
   public isAuthorizedUser: boolean = false;
+
+  constructor(public router: Router, private route: ActivatedRoute, public dataServiceInput : DataService) 
+  {
+    this.dataService = dataServiceInput;
+    this.dataService.selectedBulletin.subscribe((bulletin) => this.selectedBulletin = bulletin);
+    console.log(this.selectedBulletin);
+
+    this.bulletinForm.patchValue({subject: this.selectedBulletin.Topic});
+  }
+
+
 
   bulletinForm = new FormGroup({
     subject: new FormControl('',  Validators.required),
@@ -25,6 +38,10 @@ export class CreateBulletinComponent implements OnInit {
     solution: new FormControl('',  Validators.required),
     notes: new FormControl('')
   });
+
+  
+  //subject.summernote('insertText', this.selectedBulletin.subject);
+  //ngxSummernote.insertText(this.selectedBulletin.subject);
 
   config = {
     placeholder: '',
@@ -43,7 +60,7 @@ export class CreateBulletinComponent implements OnInit {
 
   create(){
     console.warn(this.bulletinForm.value);
-    alert("Are you sure you want to submit this form?");
+    //alert("Are you sure you want to submit this form?");
     console.warn(this.bulletinForm.value);
     this.postBulletin();
     this.router.navigate(['navigate-bulletins']);
@@ -54,11 +71,6 @@ export class CreateBulletinComponent implements OnInit {
     this.bulletinForm.reset;
   }
 
-  constructor(public router: Router, private route: ActivatedRoute, public dataServiceInput : DataService) 
-  {
-    this.dataService = dataServiceInput;
-  }
-
   ngOnInit(): void {
 
     //Get is authorized!
@@ -66,29 +78,6 @@ export class CreateBulletinComponent implements OnInit {
     // returns true if the email is contained in the authorized database.
     // The app component keeps an isAuthorized variable that we want to reference in this
     // component to verify certain actions.
-
-    let id = parseInt(this.route.snapshot.paramMap.get('id'));
-    this.selectedID = id;
-    if (this.selectedID > 0)
-    {
-      
-      let pageLabel = document.getElementById("pageLabel")
-      pageLabel.innerText = "Edit Bulletin"
-      this.getBulletin(this.selectedID);
-      
-      this.bulletinForm.patchValue({subject: this.selectedBulletin.Topic});
-      this.bulletinForm.patchValue({software: this.selectedBulletin.Software});
-      this.bulletinForm.patchValue({symptom: this.selectedBulletin.Symptom});
-      this.bulletinForm.patchValue({solution: this.selectedBulletin.Resolution});
-      this.bulletinForm.patchValue({notes: this.selectedBulletin.Notes});
-    }
-    else
-    {
-      this.dataService.createDefault().subscribe((res) => {
-        this.selectedBulletin = res;
-      })
-    }
-    console.warn(this.selectedID);
   }
 
   getBulletin(modelID: number){
@@ -100,24 +89,34 @@ export class CreateBulletinComponent implements OnInit {
   }
 
   postBulletin() {
-    this.selectedBulletin.BulletinId = this.selectedID;
     
     console.warn(this.selectedBulletin.BulletinId);
 
-    this.selectedBulletin.Topic = this.bulletinForm.get('subject').value;
-    this.selectedBulletin.Software = this.bulletinForm.get('software').value;
-    this.selectedBulletin.Symptom = this.bulletinForm.get('symptom').value;
-    this.selectedBulletin.Resolution = this.bulletinForm.get('solution').value;
-    this.selectedBulletin.Notes = this.bulletinForm.get('notes').value;
+    const newBulletin: Bulletin = {
+      BulletinId:this.selectedBulletin.BulletinId, 
+      DateCreated: this.selectedBulletin.DateCreated, 
+      Topic: this.bulletinForm.value.subject, 
+      Software: this.bulletinForm.value.software, 
+      Symptom: this.bulletinForm.value.symptom, 
+      Resolution: this.bulletinForm.value.solution,
+      Notes: this.bulletinForm.value.notes,
+      Noteimage: this.selectedBulletin.Noteimage,
+      IsDeleted:false,
+      DateModified: this.selectedBulletin.DateModified
+    }
 
-    this.dataService.updateBulletin(this.selectedBulletin);
+    console.warn(newBulletin);
+    this.dataService.updateBulletin(newBulletin);
   }
 
   deleteBulletin() {
-    if (this.selectedID != 0)
+    if (this.selectedBulletin.BulletinId != 0)
     {
       alert("Are you sure you want to delete this form?\nYou will be routed back to the navigation page.");
-      this.dataService.deleteBulletin(this.selectedID);
+
+      this.selectedBulletin.IsDeleted = true;
+
+      this.dataService.updateBulletin(this.selectedBulletin);
     }
     this.router.navigate(['navigate-bulletins']);
   }

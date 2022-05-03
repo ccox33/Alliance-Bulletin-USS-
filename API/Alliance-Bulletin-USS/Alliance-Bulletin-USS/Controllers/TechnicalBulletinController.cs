@@ -26,7 +26,7 @@ namespace Alliance_Bulletin_USS.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("GetBulletin")]
+        [HttpGet("CreateDefault")]
         public IActionResult CreateDefault()
         {
             Bulletin bulletinModel = _bulletinRepo.CreateDefault();
@@ -62,8 +62,8 @@ namespace Alliance_Bulletin_USS.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost]
-        public JsonResult Post(Bulletin bulletin)
+        [HttpPost("SaveModel")]
+        public JsonResult SaveModel(Bulletin bulletin)
         {
             if(bulletin.BulletinId == 0)
             {

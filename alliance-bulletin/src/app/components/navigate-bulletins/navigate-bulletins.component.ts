@@ -28,8 +28,6 @@ export class NavigateBulletinsComponent {
 
   @ViewChild('flex') flex: WjFlexGrid;
 
-  @ViewChild('test') pdfBulletin: ElementRef;
-
   constructor(public router: Router, public dataServiceInput : DataService) {
     this.dataService = dataServiceInput;
     //this.dataService.getBulletins().subscribe((res) => console.log(res))
@@ -65,7 +63,20 @@ export class NavigateBulletinsComponent {
   }
 
   public goToCreatePage() : void {
-    this.router.navigate(['create-bulletin', 0]);
+    const emptyBulletin: Bulletin = {
+      BulletinId:0, 
+      DateCreated: null, 
+      Topic: "", 
+      Software:"", 
+      Symptom:"", 
+      Resolution:"",
+      Notes:"",
+      Noteimage:"",
+      IsDeleted:false,
+      DateModified: null
+    }
+    this.dataService.updateSelectedBulletin(emptyBulletin);
+    this.router.navigate(['create-bulletin']);
   }
   
   public goToEditPage(selectedBulletin: Bulletin) : void {

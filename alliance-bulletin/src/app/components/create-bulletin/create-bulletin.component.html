@@ -33,9 +33,9 @@
                 <p><span style="color: red">*Required Field</span></p><br>
 
                 <div class = "options">
-                <button type="submit" class="button" [disabled]="!bulletinForm.valid || !isAuthorizedUser" (click)="create()">Confirm</button>
+                <button type="button" class="button" [disabled]="!bulletinForm.valid" (click)="create()">Confirm</button>
                 <button type="submit" class="button" (click)="discard()" routerLink="/navigate-bulletins">Discard</button>
-                <button type="submit" class="button" [disabled]="true || !isAuthorizedUser" (click)="deleteBulletin()">Delete</button>
+                <button type="submit" class="button" (click)="deleteBulletin()">Delete</button>
                 </div>
             </form> 
         </section>

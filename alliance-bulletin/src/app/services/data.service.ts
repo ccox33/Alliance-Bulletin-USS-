@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams, HttpResponse } from '@angular/common/http';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Bulletin } from '../bulletin.interface';
 
@@ -96,12 +96,16 @@ public getBulletin(modelID: number) : Observable<Bulletin>
   // New Bulletins are entered into the system with an ID of 0.
   public updateBulletin(values: any) : Observable<any>
   {
-    return this.http.post<string>(`${this.url}TechnicalBulletin/Post`, values)
+    console.log(values);
+    console.log("to dataservice in update");
+    return this.http.post<string>(`${this.url}TechnicalBulletin/SaveModel`, values)
       .pipe(
         map((res: string) => {
+          console.log("inside map");
           return res;
         })
       );
+    console.log("got to end")
   }
 
   // Takes an ID and deletes a bulletin

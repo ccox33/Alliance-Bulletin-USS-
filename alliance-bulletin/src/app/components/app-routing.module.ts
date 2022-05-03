@@ -19,7 +19,7 @@ const routes: Routes = [
     //canActivate: [MsalGuard]
   },
   { 
-    path: 'create-bulletin/:id', 
+    path: 'create-bulletin', 
     component: CreateBulletinComponent,
     //canActivate: [MsalGuard]
   },

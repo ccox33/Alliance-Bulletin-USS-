@@ -30,17 +30,10 @@ export class ViewBulletinComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    //this.dataService.selectedBulletin.subscribe((bulletin) => this.selectedBulletin = bulletin);
+    //console.log(this.selectedBulletin);
   }
 
-  getBulletin(modelID: number){
-
-    this.dataService.getBulletin(modelID).subscribe((res) => {
-      this.selectedBulletin = res;
-      console.log(this.selectedBulletin)
-    })
-
-  }
 
   
 

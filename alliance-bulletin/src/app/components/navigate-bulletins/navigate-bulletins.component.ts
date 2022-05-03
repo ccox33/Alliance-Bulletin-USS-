@@ -62,7 +62,7 @@ export class NavigateBulletinsComponent {
   public goToCreatePage() : void {
     const emptyBulletin: Bulletin = {
       BulletinId:0, 
-      DateCreated: new Date(), 
+      DateCreated: null, 
       Topic: "", 
       Software:"", 
       Symptom:"", 

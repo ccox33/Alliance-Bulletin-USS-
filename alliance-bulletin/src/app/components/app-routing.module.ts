@@ -11,22 +11,22 @@ const routes: Routes = [
   { 
     path: '', 
     component: NavigateBulletinsComponent,
-    //canActivate: [MsalGuard]
+    canActivate: [MsalGuard]
   },
   { 
     path: 'navigate-bulletins', 
     component: NavigateBulletinsComponent,
-    //canActivate: [MsalGuard]
+    canActivate: [MsalGuard]
   },
   { 
     path: 'create-bulletin', 
     component: CreateBulletinComponent,
-    //canActivate: [MsalGuard]
+    canActivate: [MsalGuard]
   },
   {
     path: 'view-bulletin', 
     component: ViewBulletinComponent,
-    //canActivate: [MsalGuard]
+    canActivate: [MsalGuard]
   }
 ];
 

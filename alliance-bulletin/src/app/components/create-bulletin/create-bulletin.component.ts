@@ -70,7 +70,7 @@ export class CreateBulletinComponent implements OnInit {
 
   create(){
     console.warn(this.bulletinForm.value);
-    //alert("Are you sure you want to submit this form?");
+    alert("Are you sure you want to submit this form?");
     console.warn(this.bulletinForm.value);
     this.postBulletin();
     this.router.navigate(['navigate-bulletins']);
@@ -85,9 +85,16 @@ export class CreateBulletinComponent implements OnInit {
     
     console.warn(this.selectedBulletin.BulletinId);
 
+    let createDate : Date = new Date();
+
+    if (this.selectedBulletin.DateCreated != null)
+    {
+      createDate = this.selectedBulletin.DateCreated;
+    }
+
     const newBulletin: Bulletin = {
       BulletinId:this.selectedBulletin.BulletinId, 
-      DateCreated: new Date(), 
+      DateCreated: createDate, 
       Topic: this.bulletinForm.value.subject, 
       Software: this.bulletinForm.value.software, 
       Symptom: this.bulletinForm.value.symptom, 
@@ -107,8 +114,20 @@ export class CreateBulletinComponent implements OnInit {
     {
       alert("Are you sure you want to delete this form?\nYou will be routed back to the navigation page.");
 
-      this.dataService.deleteBulletin(this.selectedBulletin.BulletinId);
+      const newBulletin: Bulletin = {
+        BulletinId:this.selectedBulletin.BulletinId, 
+        DateCreated: this.selectedBulletin.DateCreated, 
+        Topic: this.bulletinForm.value.subject, 
+        Software: this.bulletinForm.value.software, 
+        Symptom: this.bulletinForm.value.symptom, 
+        Resolution: this.bulletinForm.value.solution,
+        Notes: this.bulletinForm.value.notes,
+        Noteimage: this.selectedBulletin.Noteimage,
+        IsDeleted:true,
+        DateModified: new Date()
+      }
+      this.dataService.updateBulletin(newBulletin).subscribe((res) => console.log(res));
+      this.router.navigate(['navigate-bulletins']);
     }
-    this.router.navigate(['navigate-bulletins']);
   }
 }

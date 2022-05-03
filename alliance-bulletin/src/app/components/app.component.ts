@@ -63,9 +63,9 @@ export class AppComponent implements OnInit, OnDestroy{
         
        this.loggedInEmail = profile["mail"];
        console.log(this.loggedInEmail);
-       this.dataService.GetAuthorized(this.loggedInEmail).subscribe((res) => {
-        this.isAuthorizedUser = res;
-        })
+      // this.dataService.GetAuthorized(this.loggedInEmail).subscribe((res) => {
+       // this.isAuthorizedUser = res;
+        //})
 
       });
   }

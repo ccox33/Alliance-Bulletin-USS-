@@ -34,7 +34,7 @@ export class ViewBulletinComponent implements OnInit {
   downloadAsPDF(){
     console.log('downloading pdf ...');
 
-    let DATA: any = document.getElementById('mainBulletin');
+    let DATA: any = document.getElementById('pdfContain');
     html2canvas(DATA).then((canvas) => {
       let fileWidth = 208;
       let fileHeight = (canvas.height * fileWidth) / canvas.width;

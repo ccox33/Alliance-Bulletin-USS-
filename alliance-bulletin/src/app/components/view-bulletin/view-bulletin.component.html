@@ -1,69 +1,75 @@
 <body class = "hero is-fullheight">
-    <div id="mainBulletin" #mainBulletin>
+    <div id="pdfContain">
+        <div id="mainBulletin" #mainBulletin>
 
-        <!--Bulletin Header-->
-        <div id="ImageContain">
-            <img src = "assets/images/UnitedSystems.png">
-        </div>
-        <h1>Technical Bulletin</h1>
+            <!--Bulletin Header-->
+            <div id="ImageContain">
+                <img src = "assets/images/UnitedSystems.png">
+            </div>
+            <h1>Technical Bulletin</h1>
 
-        <!--Bulletin Info-->
-        <table>
-            <!--ID-->
-            <tr>
-                <td>BulletinId</td>
-                <td>{{this.selectedBulletin?.BulletinId}}</td>
-            </tr>
-            <!--Date-->
-            <tr>
-                <td>Date Created</td>
-                <td>{{selectedBulletin?.DateCreated}}</td>
-            </tr>
-            <!--Date2-->
-            <tr>
-                <td>Date Modified</td>
-                <td>{{selectedBulletin?.DateModified}}</td>
-            </tr>
-            <!--Subject-->
-            <tr>
-                <td>Subject</td>
-                <td>{{selectedBulletin?.Topic}}</td>
-            </tr>
-            <!--Software-->
-            <tr>
-                <td>Software/Versions Affected</td>
-                <td>{{selectedBulletin?.Software}}</td>
-            </tr>
-        </table>
+            <!--Bulletin Info-->
+            <table>
+                <!--ID-->
+                <tr>
+                    <td style="width: 50;">BulletinId</td>
+                    <td>{{this.selectedBulletin?.BulletinId}}</td>
+                </tr>
+                <!--Date-->
+                <tr>
+                    <td>Date Created</td>
+                    <td>{{this.selectedBulletin?.DateCreated}}</td>
+                </tr>
+                <!--Date2-->
+                <tr>
+                    <td>Date Modified</td>
+                    <td>{{selectedBulletin?.DateModified}}</td>
+                </tr>
+                <!--Subject-->
+                <tr>
+                    <td>Subject</td>
+                    <td>{{selectedBulletin?.Topic}}</td>
+                </tr>
+                <!--Software-->
+                <tr>
+                    <td>Software/Versions Affected</td>
+                    <td>{{selectedBulletin?.Software}}</td>
+                </tr>
+            </table>
 
-        <!--Main Text-->
-        <div class="readOut">
-            <h3>Symptom/Bug</h3>
-        <p>
-            {{selectedBulletin?.Symptom}}
-        </p>
-        </div>
-        
-        <div class="readOut">
-            <h3>Solution</h3>
-        <p>
-            {{selectedBulletin?.Resolution}}
-        </p>
-        </div>
-        
-        <div class="readOut">
-            <h3>Additional Notes</h3>
-        <p>
-            {{selectedBulletin?.Notes}}
-        </p>
-        </div>
-        
-        
+            <!--Main Text-->
+            <div class="readOut">
+                <h3>Symptom/Bug</h3>
+            <p>
+                {{selectedBulletin?.Symptom}}
+            </p>
+            </div>
+            
+            <div class="readOut">
+                <h3>Solution</h3>
+            <p>
+                {{selectedBulletin?.Resolution}}
+            </p>
+            </div>
+            
+            <div class="readOut">
+                <h3>Additional Notes</h3>
+            <p>
+                {{selectedBulletin?.Notes}}
+            </p>
+            </div>
+            
+            <div id="footer">
+                <p>United Systems & Software Inc.<br>
+                91 Southwest One Blvd. Benton, KY 42025<br>
+                1.800.455.3293</p>
 
+            </div>
+
+        </div>
     </div>
-
     <div class="options">
-        
+            
         <button class="button" (click)="downloadAsPDF()">Export to PDF</button>
 
         <button type="submit" class="button" routerLink="/navigate-bulletins">Back</button>

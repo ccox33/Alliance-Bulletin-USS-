@@ -68,6 +68,7 @@ export class CreateBulletinComponent implements OnInit {
     fontNames: ['Helvetica', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Roboto', 'Times']
   }
 
+  // Button Functions
   create(){
     console.warn(this.bulletinForm.value);
     alert("Are you sure you want to submit this form?");
@@ -81,6 +82,7 @@ export class CreateBulletinComponent implements OnInit {
     this.bulletinForm.reset;
   }
 
+  // API Calls
   postBulletin() {
     
     console.warn(this.selectedBulletin.BulletinId);
